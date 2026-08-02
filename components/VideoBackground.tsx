@@ -116,10 +116,17 @@ export default function VideoBackground({
     `?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
 
   return (
+    /*
+      El recuadro se declara contenedor de consulta por TAMAÑO para que el
+      iframe se dimensione contra él (cqw/cqh) y no contra el viewport. Importa
+      desde que el hero de la home mete este fondo dentro de una capa de
+      parallax más alta que la pantalla: con unidades de viewport, el "min-h-full"
+      rompía la proporción 16/9 del reproductor y Vimeo dibujaba franjas negras.
+    */
     <div
       ref={holder}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0"
+      className="pointer-events-none absolute inset-0 z-0 [container-type:size]"
     >
       {active && (
         <iframe
@@ -129,7 +136,7 @@ export default function VideoBackground({
           tabIndex={-1}
           allow="autoplay; fullscreen"
           loading="lazy"
-          className={`pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[100vw] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-0 transition-opacity duration-1000 ${
+          className={`pointer-events-none absolute top-1/2 left-1/2 h-[56.25cqw] min-h-[100cqh] w-[100cqw] min-w-[177.78cqh] -translate-x-1/2 -translate-y-1/2 border-0 transition-opacity duration-1000 ${
             visible ? "opacity-100" : "opacity-0"
           }`}
         />

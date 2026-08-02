@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/content/projects";
+import Parallax from "./Parallax";
 import { Eyebrow } from "./ui";
 
 /**
@@ -64,6 +65,7 @@ export function ProjectTile({
   index,
   wide = false,
   tagline = false,
+  parallax = false,
 }: {
   project: Project;
   shape?: string;
@@ -79,20 +81,36 @@ export function ProjectTile({
    * dentro dejaría la misma frase dos veces seguidas.
    */
   tagline?: boolean;
+  /**
+   * Deriva la foto con el scroll (D-05). Solo lo pide el mosaico de la home;
+   * en las rejillas de "related" y del portfolio hay demasiadas piezas juntas y
+   * el movimiento se convertiría en ruido.
+   */
+  parallax?: boolean;
 }) {
+  const photo = (
+    <Image
+      src={project.hero}
+      alt={project.heroAlt}
+      fill
+      sizes={sizes}
+      priority={priority}
+      className="object-cover transition-transform duration-[1100ms] ease-[var(--ease-editorial)] group-hover:scale-105"
+    />
+  );
+
   return (
     <Link
       href={`/portfolio/${project.slug}`}
       className={`group relative block overflow-hidden rounded-[2px] bg-ink-soft ${shape}`}
     >
-      <Image
-        src={project.hero}
-        alt={project.heroAlt}
-        fill
-        sizes={sizes}
-        priority={priority}
-        className="object-cover transition-transform duration-[1100ms] ease-[var(--ease-editorial)] group-hover:scale-105"
-      />
+      {parallax ? (
+        <Parallax className="absolute inset-0" shift="clamp(1rem,3vh,2.75rem)">
+          {photo}
+        </Parallax>
+      ) : (
+        photo
+      )}
       {/*
         A11Y · contraste. El degradado se mantiene opaco en el tercio inferior
         —donde vive el texto— y se disuelve antes de tapar la foto.
@@ -167,6 +185,7 @@ export default function ProjectMosaic({ projects }: { projects: Project[] }) {
               index={index}
               wide
               tagline
+              parallax
               shape={`aspect-[16/10] md:aspect-auto ${FULL_ROW}`}
               sizes="100vw"
               // Sin `priority`: el mosaico va siempre bajo el pliegue. Marcarlo
@@ -191,6 +210,7 @@ export default function ProjectMosaic({ projects }: { projects: Project[] }) {
                 project={project}
                 index={index}
                 tagline
+                parallax
                 shape={`aspect-[4/3] md:aspect-auto md:h-full ${shapes[k].span}`}
                 sizes={shapes[k].sizes}
               />

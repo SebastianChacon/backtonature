@@ -37,7 +37,7 @@ export default function PageHero({
         fill
         priority
         sizes="100vw"
-        quality={70}
+        quality={85}
         className="object-cover"
       />
       {/*

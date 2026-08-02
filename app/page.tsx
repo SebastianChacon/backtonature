@@ -7,6 +7,7 @@ import { homeProcess } from "@/content/pages";
 import VideoBackground from "@/components/VideoBackground";
 import ProjectMosaic from "@/components/ProjectMosaic";
 import ContactCta from "@/components/ContactCta";
+import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import { Band, Button, Eyebrow, Kicker } from "@/components/ui";
 
@@ -19,21 +20,30 @@ export default function HomePage() {
     <>
       {/* ---------- HERO con video (F-05) ---------- */}
       <header className="relative flex h-[100svh] min-h-[640px] items-end overflow-hidden">
-        <Image
-          src={videos.hero.poster}
-          alt=""
-          aria-hidden="true"
-          fill
-          priority
-          sizes="100vw"
-          quality={70}
-          className="object-cover"
-        />
-        <VideoBackground
-          vimeoId={videos.hero.vimeoId}
-          title={videos.hero.title}
-          revealAfter={videos.hero.revealAfter}
-        />
+        {/*
+          D-05 · La portada deriva hacia arriba al bajar por la página. El
+          recorrido es el más largo del sitio —es la única imagen que ocupa la
+          pantalla entera— pero el degradado y el titular quedan FUERA de la
+          capa: si el scrim se moviera con la foto, el contraste del titular
+          cambiaría a mitad de scroll.
+        */}
+        <Parallax className="absolute inset-0 z-0" shift="clamp(2rem,7vh,5.5rem)">
+          <Image
+            src={videos.hero.poster}
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className="object-cover"
+          />
+          <VideoBackground
+            vimeoId={videos.hero.vimeoId}
+            title={videos.hero.title}
+            revealAfter={videos.hero.revealAfter}
+          />
+        </Parallax>
         {/*
           A11Y · contraste. El césped soleado deja el texto blanco por debajo de
           AA, así que el scrim se refuerza en la mitad inferior —donde vive el
@@ -157,13 +167,20 @@ export default function HomePage() {
                   key={item.title}
                   className="group relative aspect-[3/4.4] overflow-hidden rounded-[2px] bg-ink"
                 >
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-editorial)] group-hover:scale-107"
-                  />
+                  {/* Recorrido corto: son cuatro piezas estrechas en fila y un
+                      desplazamiento largo las descoordinaría entre sí. */}
+                  <Parallax
+                    className="absolute inset-0"
+                    shift="clamp(0.75rem,2.5vh,2rem)"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-editorial)] group-hover:scale-107"
+                    />
+                  </Parallax>
                   <span
                     aria-hidden="true"
                     className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent"
