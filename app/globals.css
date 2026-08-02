@@ -159,11 +159,34 @@
 }
 
 /* ------------------------------------------------------------------
+   Parallax de portadas (D-05) — ver components/Parallax.tsx
+
+   La capa desborda el marco por arriba y por abajo, y se mueve dentro de ese
+   sobrante. El 1.06 es holgura: sin él, en el extremo del recorrido el
+   redondeo a subpíxel puede dejar una línea del fondo al descubierto.
+
+   `--parallax-p` la escribe el componente en cada frame; sin JavaScript vale 0
+   y la foto se queda centrada, que es el encuadre de siempre.
+------------------------------------------------------------------- */
+.parallax-layer {
+  position: absolute;
+  inset: calc(var(--parallax-shift, 0px) * -1.06) 0;
+  /* translate3d y no translateY: la capa se queda en el compositor y el scroll
+     no repinta la foto en cada frame. */
+  transform: translate3d(0, calc(var(--parallax-p, 0) * var(--parallax-shift, 0px)), 0);
+}
+
+/* ------------------------------------------------------------------
    Movimiento — respeta prefers-reduced-motion (A11Y)
 ------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
+    transform: none;
+  }
+
+  .parallax-layer {
+    inset: 0;
     transform: none;
   }
 
