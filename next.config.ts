@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
+    // 75 = default de Next para las piezas del mosaico y las miniaturas; 85 es
+    // el que piden las portadas (home, PageHero, ContactCta) — son la imagen
+    // más grande y más vista de cada página, así que ahí sí se paga el peso
+    // extra a cambio de que no se note la compresión.
+    qualities: [75, 85],
   },
 
   poweredByHeader: false,
