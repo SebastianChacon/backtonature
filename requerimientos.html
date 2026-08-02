@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back to Nature — Requerimientos del nuevo sitio</title>
+<meta name="description" content="Documento de requerimientos y hoja de ruta para el rediseño completo del sitio de Back to Nature Home & Garden, conservando las mismas rutas del sitio actual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#31513f; --forest-deep:#20342a; --forest-bright:#4d7059;
+  --ink:#14181a; --ink-2:#2a2f30;
+  --paper:#f4f1e8; --paper-2:#eae5d7;
+  --card:#fbf9f3;
+  --sage:#7d8a78; --stone:#5f655e;
+  --brass:#a9823f;
+  --line:rgba(32,52,42,.16);
+  --good:#3f7d54; --warn:#b0894f;
+  --f-display:"Cormorant Garamond",Georgia,serif;
+  --f-ui:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --wrap:1120px;
+  --pad:clamp(1.15rem,4vw,3rem);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --ink:#eef0ea; --ink-2:#c3c8bf;
+    --paper:#0f1512; --paper-2:#141b17;
+    --card:#171e19;
+    --sage:#93a48c; --stone:#9aa393;
+    --forest:#4d7059; --brass:#c39a54;
+    --line:rgba(241,237,226,.16);
+    --good:#6fae83;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#eef0ea; --ink-2:#c3c8bf; --paper:#0f1512; --paper-2:#141b17; --card:#171e19;
+  --sage:#93a48c; --stone:#9aa393; --forest:#4d7059; --brass:#c39a54; --line:rgba(241,237,226,.16); --good:#6fae83;
+}
+:root[data-theme="light"]{
+  --ink:#14181a; --ink-2:#2a2f30; --paper:#f4f1e8; --paper-2:#eae5d7; --card:#fbf9f3;
+  --sage:#7d8a78; --stone:#5f655e; --forest:#31513f; --brass:#a9823f; --line:rgba(32,52,42,.16); --good:#3f7d54;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-ui);font-weight:300;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:500;line-height:1.08;text-wrap:balance}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:400;color:var(--forest)}
+
+/* COVER */
+.cover{background:var(--forest-deep);color:#f1ede2;padding:clamp(3.5rem,9vw,7rem) 0 clamp(2.5rem,6vw,4rem);position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-8%;top:-30%;width:46%;height:170%;
+  background:radial-gradient(closest-side,rgba(169,130,63,.18),transparent 70%);pointer-events:none}
+.cover .eyebrow{color:#c39a54}
+.cover h1{font-size:clamp(2.6rem,1.6rem+4.6vw,5.4rem);color:#fff;margin:1rem 0 .6rem;max-width:20ch}
+.cover .sub{font-family:var(--f-display);font-weight:400;font-style:italic;font-size:clamp(1.2rem,1rem+.8vw,1.7rem);color:#c8d2c4;max-width:44ch}
+.cover__meta{display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid rgba(241,237,226,.18)}
+.cover__meta div{display:flex;flex-direction:column;gap:.25rem}
+.cover__meta dt{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#9fb09a}
+.cover__meta dd{font-family:var(--f-display);font-size:1.15rem;color:#f1ede2}
+
+/* LAYOUT with TOC */
+.shell{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:1000px){
+  .shell{grid-template-columns:230px 1fr;gap:clamp(2rem,4vw,4rem);align-items:start}
+  .toc{position:sticky;top:0;padding-top:3rem}
+}
+.toc{font-size:.86rem}
+.toc h5{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-bottom:.9rem}
+.toc a{display:block;color:var(--stone);text-decoration:none;padding:.32rem 0;border-left:2px solid transparent;padding-left:.8rem;transition:color .2s,border-color .2s}
+.toc a:hover{color:var(--forest);border-color:var(--brass)}
+@media(max-width:999px){.toc{display:none}}
+
+main{padding-block:2.5rem 4rem}
+section{padding-block:clamp(2rem,4vw,3.2rem);border-top:1px solid var(--line)}
+section:first-child{border-top:0}
+.sechead{display:flex;gap:1rem;align-items:baseline;margin-bottom:1.4rem}
+.sechead .no{font-family:var(--f-mono);font-size:.8rem;color:var(--brass);letter-spacing:.05em;padding-top:.4rem;min-width:2.2rem}
+.sechead h2{font-size:clamp(1.7rem,1.2rem+1.8vw,2.7rem)}
+section p{max-width:68ch;margin-bottom:1rem;color:var(--ink-2)}
+section p strong{color:var(--ink);font-weight:400}
+.lead{font-family:var(--f-display);font-weight:400;font-size:clamp(1.2rem,1rem+.6vw,1.5rem);line-height:1.4;color:var(--ink) !important;max-width:60ch}
+
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:.6rem 0 1.2rem;max-width:70ch}
+ul.clean li{padding-left:1.4rem;position:relative;color:var(--ink-2)}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--brass);border-radius:1px;transform:rotate(45deg)}
+ul.clean li b{color:var(--ink);font-weight:400}
+
+/* TABLE */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;margin:1rem 0 1.4rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:640px}
+th,td{text-align:left;padding:.72rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--paper-2);font-family:var(--f-ui);font-weight:500;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+tbody tr:last-child td{border-bottom:0}
+td code,.route{font-family:var(--f-mono);font-size:.82rem;color:var(--forest);white-space:nowrap}
+.prio{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.05em;padding:.12rem .5rem;border-radius:100px;border:1px solid var(--line);white-space:nowrap}
+.prio.p1{color:var(--brass);border-color:color-mix(in srgb,var(--brass),transparent 55%)}
+.prio.p2{color:var(--forest);border-color:color-mix(in srgb,var(--forest),transparent 55%)}
+.prio.p3{color:var(--stone)}
+.tag{font-family:var(--f-mono);font-size:.72rem;color:var(--stone)}
+
+/* REQUIREMENT CARDS */
+.reqs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;margin:1rem 0 1.2rem}
+.req{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.4rem}
+.req .id{font-family:var(--f-mono);font-size:.72rem;color:var(--brass);letter-spacing:.06em}
+.req h4{font-family:var(--f-ui);font-weight:500;font-size:1rem;color:var(--ink)}
+.req p{font-size:.88rem;margin:0;max-width:none;color:var(--ink-2)}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px;padding:1.1rem 1.3rem;margin:1.2rem 0;max-width:72ch}
+.callout .eyebrow{color:var(--brass);display:block;margin-bottom:.4rem}
+.callout p{margin:0;color:var(--ink-2)}
+
+/* ROADMAP */
+.phases{display:flex;flex-direction:column;gap:0;margin:1rem 0}
+.phase{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.phase:first-child{border-top:0}
+.phase__n{font-family:var(--f-display);font-size:2rem;color:var(--forest);line-height:1;min-width:2.6rem}
+.phase h4{font-family:var(--f-ui);font-weight:500;font-size:1.05rem;color:var(--ink);margin-bottom:.15rem}
+.phase .dur{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);text-transform:uppercase;letter-spacing:.1em}
+.phase p{font-size:.9rem;margin:.4rem 0 0;max-width:64ch}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1.1rem}
+.metric .v{font-family:var(--f-display);font-size:2rem;color:var(--forest);line-height:1}
+.metric .l{font-size:.78rem;color:var(--stone);margin-top:.35rem}
+
+footer{background:var(--forest-deep);color:#c8d2c4;padding:2.4rem 0;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer b{color:#f1ede2;font-weight:400;font-family:var(--f-display);font-size:1.05rem}
+
+.themebtn{position:fixed;bottom:1.1rem;right:1.1rem;z-index:20;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:100px;
+  font-family:var(--f-ui);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Documento de requerimientos · Rediseño de sitio web</p>
+    <h1>Back to Nature Home &amp; Garden</h1>
+    <p class="sub">De una landing a un sitio editorial completo — con las mismas rutas del sitio actual, mejor diseño y un estándar de firma de lujo.</p>
+    <dl class="cover__meta">
+      <div><dt>Cliente</dt><dd>Back to Nature (Mariani Premier Group)</dd></div>
+      <div><dt>Sitio actual</dt><dd>backtonature.net</dd></div>
+      <div><dt>Objetivo</dt><dd>Rediseño completo + migración</dd></div>
+      <div><dt>Estado</dt><dd>Concepto aprobado → especificación</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="shell">
+
+  <nav class="toc" aria-label="Índice">
+    <h5>Contenido</h5>
+    <a href="#vision">01 · Visión y objetivos</a>
+    <a href="#diagnostico">02 · Diagnóstico</a>
+    <a href="#rutas">03 · Mapa de rutas</a>
+    <a href="#diseno">04 · Sistema de diseño</a>
+    <a href="#paginas">05 · Requerimientos por página</a>
+    <a href="#funcional">06 · Funcionales</a>
+    <a href="#tecnico">07 · Técnicos</a>
+    <a href="#seo">08 · SEO y migración</a>
+    <a href="#accesibilidad">09 · Accesibilidad</a>
+    <a href="#rendimiento">10 · Rendimiento y métricas</a>
+    <a href="#contenido">11 · Contenido y activos</a>
+    <a href="#roadmap">12 · Hoja de ruta</a>
+  </nav>
+
+  <main>
+
+    <!-- 01 VISION -->
+    <section id="vision">
+      <div class="sechead"><span class="no">01</span><h2>Visión y objetivos</h2></div>
+      <p class="lead">Que backtonature.net se vea y se sienta al nivel de las mejores firmas de arquitectura paisajística de lujo (Hollander Design, Reed Hilderbrand), conservando su historia, sus rutas y su SEO — pero con un diseño, una fluidez y un rendimiento de otra categoría.</p>
+      <p>El sitio actual funciona, pero su plantilla (Uncode/WPBakery) lo hace pesado y con una percepción de marca por debajo de lo que cobra la empresa. El objetivo no es más tráfico por volumen — es <strong>elevar la percepción y convertir mejor a los clientes de alto valor</strong> (referidos, arquitectos, interioristas) que ya llegan al sitio.</p>
+      <ul class="clean">
+        <li><b>Elevar la marca:</b> presentación editorial, fotografía a gran formato, tipografía de firma.</li>
+        <li><b>Convertir mejor:</b> portfolio como piezas narradas (case studies), CTA claros a contacto.</li>
+        <li><b>Diferenciar:</b> destacar el ángulo ecológico y comestible (huertos, apiarios, LEED) que nadie más muestra así.</li>
+        <li><b>Preservar:</b> mantener las mismas rutas para no perder posicionamiento ni enlaces existentes.</li>
+        <li><b>Rendir:</b> velocidad, móvil y accesibilidad impecables.</li>
+      </ul>
+    </section>
+
+    <!-- 02 DIAGNOSTICO -->
+    <section id="diagnostico">
+      <div class="sechead"><span class="no">02</span><h2>Diagnóstico del sitio actual</h2></div>
+      <p>Resumen de lo detectado en la auditoría de backtonature.net, que justifica el rediseño:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Área</th><th>Situación actual</th><th>Impacto</th></tr></thead>
+          <tbody>
+            <tr><td>Plataforma</td><td>WordPress + tema Uncode (WPBakery), plugin W3 Total Cache</td><td>Peso alto, difícil de optimizar y mantener</td></tr>
+            <tr><td>Peso de página</td><td>HTML de ~789 KB, 39 archivos JS en la home</td><td>Hinchazón típica de page-builder</td></tr>
+            <tr><td>SEO técnico</td><td><b>robots.txt apunta el sitemap a backtonature.com</b> (dominio aparcado)</td><td>Error real: Google busca el sitemap donde no existe</td></tr>
+            <tr><td>Contenido</td><td>0 entradas de blog; 9 proyectos sin narrativa profunda</td><td>Poca captación por contenido / cola larga</td></tr>
+            <tr><td>Percepción</td><td>Diseño de plantilla genérico</td><td>Por debajo del ticket ($100k–$1M+) que maneja la firma</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="eyebrow">Gana rápido, incluso antes del rediseño</span>
+        <p>Corregir el <b>robots.txt/sitemap</b> para que apunte a backtonature.net es de coste casi nulo y arregla un fallo de indexación activo. Debe entrar como primer paso.</p>
+      </div>
+    </section>
+
+    <!-- 03 RUTAS -->
+    <section id="rutas">
+      <div class="sechead"><span class="no">03</span><h2>Mapa de rutas (misma estructura, mejor sitio)</h2></div>
+      <p>El nuevo sitio <strong>replica exactamente las rutas del sitio actual</strong> para conservar el SEO y los enlaces existentes. Cada URL existente se mantiene o recibe un redirect 301. Estas son las rutas confirmadas hoy en backtonature.net:</p>
+
+      <h4 style="margin:1.4rem 0 .5rem;font-size:1.15rem;color:var(--forest)">Páginas principales</h4>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Ruta</th><th>Página</th><th>Propósito</th><th>Prioridad</th></tr></thead>
+          <tbody>
+            <tr><td><span class="route">/</span></td><td>Home</td><td>Gancho editorial: hero en video, portfolio destacado, ethos, CTA</td><td><span class="prio p1">Crítica</span></td></tr>
+            <tr><td><span class="route">/about</span></td><td>About</td><td>Historia de la firma, equipo, credenciales</td><td><span class="prio p1">Crítica</span></td></tr>
+            <tr><td><span class="route">/ethos</span></td><td>Ethos</td><td>Filosofía ecológica — diferenciador de marca</td><td><span class="prio p2">Alta</span></td></tr>
+            <tr><td><span class="route">/what-we-do</span></td><td>What We Do</td><td>Índice de servicios (4 disciplinas)</td><td><span class="prio p1">Crítica</span></td></tr>
+            <tr><td><span class="route">/how-we-work</span></td><td>How We Work</td><td>Proceso: diseño → construcción → mantenimiento</td><td><span class="prio p2">Alta</span></td></tr>
+            <tr><td><span class="route">/galleries</span></td><td>Galleries</td><td>Galería visual filtrable</td><td><span class="prio p2">Alta</span></td></tr>
+            <tr><td><span class="route">/case-study</span></td><td>Case Studies</td><td>Índice de proyectos narrados</td><td><span class="prio p1">Crítica</span></td></tr>
+            <tr><td><span class="route">/careers</span></td><td>Careers</td><td>Vacantes + formulario de aplicación</td><td><span class="prio p3">Media</span></td></tr>
+            <tr><td><span class="route">/contact</span></td><td>Contact</td><td>Formulario, teléfono, mapa, horarios</td><td><span class="prio p1">Crítica</span></td></tr>
+            <tr><td><span class="route">/subscribe</span></td><td>Subscribe</td><td>Alta a novedades</td><td><span class="prio p3">Media</span></td></tr>
+            <tr><td><span class="route">/accessibility-statement</span></td><td>Accessibility</td><td>Declaración de accesibilidad</td><td><span class="prio p3">Media</span></td></tr>
+            <tr><td><span class="route">/privacy-policy</span></td><td>Privacy Policy</td><td>Política de privacidad (Mariani)</td><td><span class="prio p3">Media</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin:1.4rem 0 .5rem;font-size:1.15rem;color:var(--forest)">Servicios (sub-rutas de What We Do)</h4>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Ruta</th><th>Servicio</th></tr></thead>
+          <tbody>
+            <tr><td><span class="route">/landscape-architecture</span></td><td>Landscape Architecture</td></tr>
+            <tr><td><span class="route">/landscape-construction</span></td><td>Landscape Construction</td></tr>
+            <tr><td><span class="route">/landscape-maintenance</span></td><td>Landscape Maintenance</td></tr>
+            <tr><td><span class="route">/edible-gardens-and-culinary-experiences</span></td><td>Edible Gardens &amp; Culinary Experiences</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin:1.4rem 0 .5rem;font-size:1.15rem;color:var(--forest)">Proyectos (portfolio dinámico)</h4>
+      <p>Cada proyecto vive en <span class="route">/portfolio/[slug]</span>, generado desde el CMS. Los 9 actuales:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Ruta</th><th>Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td><span class="route">/portfolio/harding-harvest</span></td><td>Harding Harvest</td></tr>
+            <tr><td><span class="route">/portfolio/chateau-in-bloom</span></td><td>Chateau in Bloom</td></tr>
+            <tr><td><span class="route">/portfolio/montclair-historic-haven</span></td><td>Montclair Historic Haven</td></tr>
+            <tr><td><span class="route">/portfolio/historic-hamlet-redesigned</span></td><td>Historic Hamlet Redesigned</td></tr>
+            <tr><td><span class="route">/portfolio/eco-and-agro-luxury</span></td><td>Eco and Agro Luxury</td></tr>
+            <tr><td><span class="route">/portfolio/inspired-by-nature</span></td><td>Inspired by Nature</td></tr>
+            <tr><td><span class="route">/portfolio/master-planning</span></td><td>Master Planning</td></tr>
+            <tr><td><span class="route">/portfolio/luxury-and-leed</span></td><td>Luxury and LEED</td></tr>
+            <tr><td><span class="route">/portfolio/residential-design-and-installation</span></td><td>Residential Design and Installation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 04 DISENO -->
+    <section id="diseno">
+      <div class="sechead"><span class="no">04</span><h2>Sistema de diseño</h2></div>
+      <p>El lenguaje visual ya validado en el concepto de la home. Todas las páginas lo heredan para verse como un solo sistema.</p>
+      <div class="reqs">
+        <div class="req"><span class="id">D-01 · Color</span><h4>Paleta de marca</h4><p>Verde bosque <b>#31513f</b>, verde-negro #0f1512, hueso cálido #f1ede2, salvia, y latón #a9823f muy contenido. 90% foto+neutro, 10% verde.</p></div>
+        <div class="req"><span class="id">D-02 · Tipografía</span><h4>Cormorant + Jost</h4><p>Cormorant Garamond para titulares (aire de firma/AD); Jost para etiquetas y UI (mayúsculas con tracking). Auto-alojar para privacidad/velocidad.</p></div>
+        <div class="req"><span class="id">D-03 · Layout</span><h4>Editorial a sangre</h4><p>Bandas a pantalla completa, mucho aire, mosaicos asimétricos. Ancho de texto ~65 caracteres. Escala tipográfica grande.</p></div>
+        <div class="req"><span class="id">D-04 · Fotografía</span><h4>La foto manda</h4><p>Imágenes a gran formato, tratamiento consistente. Hero en video. Dirección de arte unificada en todo el sitio.</p></div>
+        <div class="req"><span class="id">D-05 · Movimiento</span><h4>Fluidez sutil</h4><p>Smooth scroll, reveals con fade suave, zoom lento en hover, parallax discreto. "Si se nota, es demasiado".</p></div>
+        <div class="req"><span class="id">D-06 · Componentes</span><h4>Biblioteca reutilizable</h4><p>Nav, hero, tarjeta de proyecto, banda de servicio, CTA, footer, formularios — sistema consistente entre rutas.</p></div>
+        <div class="req"><span class="id">D-07 · Responsivo</span><h4>Móvil de primera</h4><p>Menú móvil elegante, tipografía que escala, imágenes adaptativas. Diseñar mobile-first.</p></div>
+        <div class="req"><span class="id">D-08 · Sistema de diseño</span><h4>Tokens documentados</h4><p>Color, tipo, espaciado y motion como variables/tokens para consistencia y mantenimiento.</p></div>
+      </div>
+    </section>
+
+    <!-- 05 PAGINAS -->
+    <section id="paginas">
+      <div class="sechead"><span class="no">05</span><h2>Requerimientos por página</h2></div>
+      <ul class="clean">
+        <li><b>Home:</b> hero en video, intro/ethos, portfolio destacado (mosaico), 4 servicios, sección "Cultivate" (diferenciador ecológico), prueba social + logo Mariani, CTA de contacto potente.</li>
+        <li><b>Case Studies / Portfolio:</b> índice tipo galería; cada proyecto como historia narrada — reto → diseño → resultado, con antes/después, ubicación, alcance y etiquetas (LEED, eco). Aquí se aprovecha la biblioteca de 720 fotos.</li>
+        <li><b>What We Do + 4 servicios:</b> índice de disciplinas y una página por servicio con proceso visual y proyectos relacionados.</li>
+        <li><b>How We Work:</b> proceso paso a paso (secuencia real, numerada).</li>
+        <li><b>About / Ethos:</b> historia, equipo, credenciales; el ángulo ecológico como narrativa central.</li>
+        <li><b>Galleries:</b> galería filtrable (por tipo/servicio) con lightbox.</li>
+        <li><b>Contact:</b> formulario validado, teléfono clicable, horarios "by appointment", mapa de la zona de servicio (NJ/NY/CT).</li>
+        <li><b>Careers:</b> vacantes + formulario de aplicación con adjuntos.</li>
+        <li><b>Subscribe / Legales:</b> alta a novedades; privacidad y accesibilidad heredadas de Mariani.</li>
+      </ul>
+    </section>
+
+    <!-- 06 FUNCIONAL -->
+    <section id="funcional">
+      <div class="sechead"><span class="no">06</span><h2>Requerimientos funcionales</h2></div>
+      <div class="reqs">
+        <div class="req"><span class="id">F-01</span><h4>CMS editable</h4><p>El equipo/agencia edita proyectos, textos e imágenes sin tocar código.</p></div>
+        <div class="req"><span class="id">F-02</span><h4>Portfolio dinámico</h4><p>Alta/baja de proyectos genera rutas <span class="route">/portfolio/[slug]</span> automáticamente.</p></div>
+        <div class="req"><span class="id">F-03</span><h4>Formularios</h4><p>Contacto, Careers (con adjuntos) y Subscribe, con validación, anti-spam y notificación por email.</p></div>
+        <div class="req"><span class="id">F-04</span><h4>Galería / lightbox</h4><p>Galerías filtrables con visor a pantalla completa y navegación por teclado.</p></div>
+        <div class="req"><span class="id">F-05</span><h4>Video de fondo</h4><p>Hero y CTA con video optimizado (Vimeo o auto-alojado), con póster de respaldo.</p></div>
+        <div class="req"><span class="id">F-06</span><h4>Analítica y consentimiento</h4><p>GA4, banner de cookies (privacidad primero) y eventos de conversión (clic a teléfono, envío de formulario).</p></div>
+        <div class="req"><span class="id">F-07</span><h4>Navegación</h4><p>Menú principal, menú móvil, breadcrumbs en proyectos, footer con mapa del sitio.</p></div>
+        <div class="req"><span class="id">F-08</span><h4>Búsqueda (opcional)</h4><p>Búsqueda de proyectos por nombre/tipo si el volumen de contenido crece.</p></div>
+      </div>
+    </section>
+
+    <!-- 07 TECNICO -->
+    <section id="tecnico">
+      <div class="sechead"><span class="no">07</span><h2>Requerimientos técnicos</h2></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Capa</th><th>Recomendación</th><th>Por qué</th></tr></thead>
+          <tbody>
+            <tr><td>Framework</td><td>Next.js (App Router) en Vercel</td><td>Velocidad, imágenes optimizadas, transiciones fluidas, SEO</td></tr>
+            <tr><td>CMS</td><td>Headless (Sanity / Payload) o WordPress headless</td><td>Edición sin código; conserva flujo actual si se desea</td></tr>
+            <tr><td>Estilos</td><td>Tailwind CSS + tokens de diseño</td><td>Consistencia y velocidad de desarrollo</td></tr>
+            <tr><td>Movimiento</td><td>Framer Motion + Lenis (smooth scroll)</td><td>La fluidez del sistema de diseño</td></tr>
+            <tr><td>Imágenes</td><td><span class="tag">next/image</span> · WebP/AVIF · lazy</td><td>Resuelve el mayor defecto del sitio actual (peso)</td></tr>
+            <tr><td>Tipografía</td><td>Fuentes auto-alojadas</td><td>Velocidad y privacidad (sin depender de Google Fonts)</td></tr>
+            <tr><td>Hosting</td><td>Vercel (o el estándar de Mariani)</td><td>CI/CD, previews por rama, CDN global</td></tr>
+            <tr><td>Formularios</td><td>Server actions / servicio de formularios</td><td>Validación segura y notificaciones</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="eyebrow">Decisión pendiente con el cliente</span>
+        <p>Como el sitio es de <b>Mariani Premier Group</b>, hay que alinear el stack y el hosting con sus estándares corporativos y con el contrato vigente de la agencia actual (Insomnia Graphix) antes de comprometer arquitectura.</p>
+      </div>
+    </section>
+
+    <!-- 08 SEO -->
+    <section id="seo">
+      <div class="sechead"><span class="no">08</span><h2>SEO y migración</h2></div>
+      <p>La regla de oro de esta migración: <strong>conservar rutas y autoridad</strong>. Nada de perder posicionamiento por el rediseño.</p>
+      <div class="reqs">
+        <div class="req"><span class="id">S-01</span><h4>Paridad de URLs</h4><p>Mantener las mismas rutas del sitio actual; 301 para cualquier cambio inevitable.</p></div>
+        <div class="req"><span class="id">S-02</span><h4>Arreglar sitemap/robots</h4><p>Sitemap XML válido apuntando a backtonature.net (corregir el bug actual del .com).</p></div>
+        <div class="req"><span class="id">S-03</span><h4>Metadatos</h4><p>Title/description únicos por página, Open Graph y Twitter Card, canonical.</p></div>
+        <div class="req"><span class="id">S-04</span><h4>Datos estructurados</h4><p>Schema.org: LocalBusiness, y para proyectos donde aplique. NAP consistente (nombre, dirección, teléfono).</p></div>
+        <div class="req"><span class="id">S-05</span><h4>SEO local</h4><p>Google Business Profile, señales locales para NJ/NY/CT, contenido de zona de servicio.</p></div>
+        <div class="req"><span class="id">S-06</span><h4>Contenido/blog</h4><p>Sección de artículos/proyectos para cola larga (ej. "jardines comestibles", "LEED").</p></div>
+        <div class="req"><span class="id">S-07</span><h4>Redirects &amp; 404</h4><p>Tabla de redirects verificada; página 404 útil que reconduce al portfolio.</p></div>
+        <div class="req"><span class="id">S-08</span><h4>Verificación</h4><p>Search Console, envío de sitemap y monitoreo de indexación post-lanzamiento.</p></div>
+      </div>
+    </section>
+
+    <!-- 09 ACCESIBILIDAD -->
+    <section id="accesibilidad">
+      <div class="sechead"><span class="no">09</span><h2>Accesibilidad</h2></div>
+      <p>Objetivo: <strong>WCAG 2.1 AA</strong>. Además de ser correcto, reduce riesgo legal (el sitio actual ya publica una declaración de accesibilidad).</p>
+      <ul class="clean">
+        <li><b>Semántica y foco:</b> HTML semántico, orden de tabulación lógico, foco visible, skip link.</li>
+        <li><b>Contraste:</b> texto legible sobre foto/video (scrims y sombras donde haga falta).</li>
+        <li><b>Teclado:</b> menús, lightbox y formularios operables solo con teclado.</li>
+        <li><b>Multimedia:</b> videos de fondo silenciados, decorativos (<span class="tag">aria-hidden</span>), fuera del orden de tabulación; alt real en imágenes.</li>
+        <li><b>Movimiento:</b> respetar <span class="tag">prefers-reduced-motion</span> (sin autoplay de video, sin animaciones).</li>
+        <li><b>Formularios:</b> labels asociados, mensajes de error claros.</li>
+        <li><b>Auditoría:</b> revisión con axe/Lighthouse y prueba con lector de pantalla antes de lanzar.</li>
+      </ul>
+    </section>
+
+    <!-- 10 RENDIMIENTO -->
+    <section id="rendimiento">
+      <div class="sechead"><span class="no">10</span><h2>Rendimiento y métricas de éxito</h2></div>
+      <p>Metas técnicas medibles (Core Web Vitals y Lighthouse) — el "definition of done" del proyecto:</p>
+      <div class="metrics">
+        <div class="metric"><div class="v">≥ 95</div><div class="l">Lighthouse (Perf, SEO, A11y, Best Practices)</div></div>
+        <div class="metric"><div class="v">&lt; 2.5s</div><div class="l">LCP (Largest Contentful Paint)</div></div>
+        <div class="metric"><div class="v">&lt; 0.1</div><div class="l">CLS (Cumulative Layout Shift)</div></div>
+        <div class="metric"><div class="v">&lt; 200ms</div><div class="l">INP (interacción)</div></div>
+        <div class="metric"><div class="v">AA</div><div class="l">WCAG 2.1</div></div>
+        <div class="metric"><div class="v">&lt; 1MB</div><div class="l">Peso inicial objetivo (sin video)</div></div>
+      </div>
+      <p style="margin-top:1rem">Métricas de negocio a seguir tras el lanzamiento: <strong>tasa de contacto</strong> (visita → formulario/llamada), tiempo en páginas de proyecto, y leads cualificados por mes.</p>
+    </section>
+
+    <!-- 11 CONTENIDO -->
+    <section id="contenido">
+      <div class="sechead"><span class="no">11</span><h2>Contenido y activos</h2></div>
+      <p>Buena noticia: <strong>el material ya existe</strong> — no hay que producir desde cero.</p>
+      <ul class="clean">
+        <li><b>720 imágenes</b> en la biblioteca actual (proyectos, huertos, apiarios, hardscape).</li>
+        <li><b>2 videos</b> en Vimeo para heros — se recomienda una versión sin la placa de intro incrustada.</li>
+        <li><b>9 proyectos</b> con nombres editoriales listos para case studies (faltan textos narrados por proyecto).</li>
+        <li><b>Identidad de marca</b> ya definida (verde, logo, tono) — se reutiliza y refina.</li>
+        <li><b>Pendiente de recolectar:</b> textos de cada proyecto (reto/solución/resultado), testimonios, premios/prensa, biografías del equipo, fotografía profesional adicional si se requiere consistencia.</li>
+      </ul>
+    </section>
+
+    <!-- 12 ROADMAP -->
+    <section id="roadmap">
+      <div class="sechead"><span class="no">12</span><h2>Hoja de ruta</h2></div>
+      <p>Fases sugeridas. La primera es el "gana rápido" que puede ejecutarse aunque el rediseño no esté aprobado.</p>
+      <div class="phases">
+        <div class="phase"><div class="phase__n">0</div><div><h4>Gana rápido</h4><div class="dur">Días</div><p>Corregir robots.txt/sitemap, arreglar Core Web Vitals básicos y Google Business Profile en el sitio actual. Demuestra valor y abre la puerta.</p></div></div>
+        <div class="phase"><div class="phase__n">1</div><div><h4>Descubrimiento y contenido</h4><div class="dur">1–2 semanas</div><p>Alinear con Mariani/agencia, inventariar assets, redactar textos de proyectos, recopilar testimonios y prensa.</p></div></div>
+        <div class="phase"><div class="phase__n">2</div><div><h4>Diseño</h4><div class="dur">2–3 semanas</div><p>Sistema de diseño + tokens, mockups de rutas clave (Home, Case Study, Servicio, Contact), aprobación del cliente.</p></div></div>
+        <div class="phase"><div class="phase__n">3</div><div><h4>Desarrollo</h4><div class="dur">3–5 semanas</div><p>Next.js + CMS, biblioteca de componentes, todas las rutas, formularios, movimiento, integración de video.</p></div></div>
+        <div class="phase"><div class="phase__n">4</div><div><h4>Contenido y SEO</h4><div class="dur">1–2 semanas</div><p>Carga de proyectos, metadatos, datos estructurados, tabla de redirects 301, sitemap.</p></div></div>
+        <div class="phase"><div class="phase__n">5</div><div><h4>QA y lanzamiento</h4><div class="dur">1 semana</div><p>Accesibilidad (AA), rendimiento (Lighthouse ≥95), pruebas cross-browser/dispositivo, y publicación con monitoreo.</p></div></div>
+        <div class="phase"><div class="phase__n">6</div><div><h4>Post-lanzamiento</h4><div class="dur">Continuo</div><p>Search Console, analítica de conversión, iteración y contenido nuevo (proyectos/artículos).</p></div></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>Back to Nature — Rediseño de sitio web</b>
+    <span>Documento de requerimientos · Concepto v1 · backtonature.net</span>
+  </div>
+</footer>
+
+<button class="themebtn" id="themebtn" type="button" aria-label="Cambiar tema">Tema</button>
+<script>
+  // theme toggle (persist in session)
+  var btn=document.getElementById('themebtn');
+  function current(){return document.documentElement.getAttribute('data-theme')|| (window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  btn.addEventListener('click',function(){
+    var next=current()==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    btn.textContent=next==='dark'?'Claro':'Oscuro';
+  });
+</script>
+</body>
+</html>

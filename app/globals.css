@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   D-08 · Tokens de diseño
+   Heredados del concepto aprobado (backtonature-concept.html).
+   Cualquier página nueva debe consumir estos tokens, no valores sueltos.
+------------------------------------------------------------------- */
+@theme {
+  /* Color — 90% foto + neutro, 10% verde (D-01) */
+  --color-forest: #31513f;
+  --color-forest-deep: #20342a;
+  --color-forest-bright: #4d7059;
+  --color-ink: #0f1512;
+  --color-ink-soft: #161d18;
+  --color-bone: #f1ede2;
+  --color-bone-2: #e7e1d2;
+  --color-sage: #9aa992;
+  --color-stone: #6c7269;
+  --color-brass: #b08a4f;
+
+  /* Tipografía (D-02) — las familias las inyecta next/font en layout.tsx */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-ui: var(--font-jost), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Escala tipográfica fluida (D-03) */
+  --text-label: clamp(0.68rem, 0.63rem + 0.2vw, 0.78rem);
+  --text-body: clamp(1.05rem, 1rem + 0.35vw, 1.28rem);
+  --text-lead: clamp(1.4rem, 1.2rem + 1.1vw, 2.1rem);
+  --text-h3: clamp(1.6rem, 1.3rem + 1.6vw, 2.5rem);
+  --text-h2: clamp(2.4rem, 1.7rem + 3.4vw, 4.6rem);
+  --text-hero: clamp(3.1rem, 1.8rem + 6vw, 8rem);
+
+  /* Layout */
+  --spacing-pad: clamp(1.25rem, 5vw, 5rem);
+
+  /* Movimiento (D-05) — "si se nota, es demasiado" */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-ui);
+    font-weight: 300;
+    background: var(--color-ink);
+    color: var(--color-bone);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.02;
+    text-wrap: balance;
+    letter-spacing: 0.005em;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* A11Y — foco visible en todo lo interactivo */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-ink);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Utilidades del sistema
+------------------------------------------------------------------- */
+@utility wrap {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-pad);
+}
+
+@utility eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: var(--text-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+@utility serif-lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--text-lead);
+  line-height: 1.28;
+}
+
+/* Ancho de lectura ~65 caracteres (D-03) */
+@utility measure {
+  max-width: 65ch;
+}
+
+/* ------------------------------------------------------------------
+   Reveals (D-05)
+
+   El estado oculto solo se aplica si el navegador tiene scripting activo, que
+   es justamente cuando Reveal podrá volver a mostrarlo. Sin JavaScript —o en un
+   navegador que no soporte esta media query— la regla no entra y el contenido
+   se ve completo. Se resuelve en CSS a propósito: mutar una clase en <html>
+   desde un script en línea rompe la hidratación de React.
+------------------------------------------------------------------- */
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 1s var(--ease-editorial),
+      transform 1s var(--ease-editorial);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Movimiento — respeta prefers-reduced-motion (A11Y)
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

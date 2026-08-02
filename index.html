@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back to Nature — Landscape Architecture &amp; Design/Build</title>
+<meta name="description" content="Back to Nature is an ecologically inspired landscape architecture and design/build firm and garden center in Basking Ridge, New Jersey, serving New Jersey, New York and Connecticut.">
+<meta name="theme-color" content="#20342a">
+<link rel="canonical" href="https://backtonature.net/">
+<link rel="icon" href="https://backtonature.net/wp-content/uploads/2023/05/cropped-favicon-300x300.png" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Back to Nature — Landscape Architecture &amp; Design/Build">
+<meta property="og:description" content="Ecologically inspired landscape design/build in New Jersey, New York &amp; Connecticut.">
+<meta property="og:image" content="https://backtonature.net/wp-content/uploads/2023/06/BTN-Landscape-6a.jpg">
+<meta property="og:url" content="https://backtonature.net/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --forest:#31513f;
+  --forest-deep:#20342a;
+  --forest-bright:#4d7059;
+  --ink:#0f1512;
+  --ink-soft:#161d18;
+  --bone:#f1ede2;
+  --bone-2:#e7e1d2;
+  --sage:#9aa992;
+  --stone:#6c7269;
+  --brass:#b08a4f;
+  --line-d:rgba(241,237,226,.16);
+  --line-l:rgba(32,52,42,.16);
+
+  --f-display:"Cormorant Garamond",Georgia,serif;
+  --f-ui:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  --wrap:1280px;
+  --pad:clamp(1.25rem,5vw,5rem);
+
+  --step-label:clamp(.68rem,.63rem + .2vw,.78rem);
+  --step-body:clamp(1.05rem,1rem + .35vw,1.28rem);
+  --step-lead:clamp(1.4rem,1.2rem + 1.1vw,2.1rem);
+  --step-h3:clamp(1.6rem,1.3rem + 1.6vw,2.5rem);
+  --step-h2:clamp(2.4rem,1.7rem + 3.4vw,4.6rem);
+  --step-hero:clamp(3.1rem,1.8rem + 6vw,8rem);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--f-ui);
+  font-weight:300;
+  background:var(--ink);
+  color:var(--bone);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.eyebrow{
+  font-family:var(--f-ui);
+  font-weight:400;
+  font-size:var(--step-label);
+  letter-spacing:.32em;
+  text-transform:uppercase;
+}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.02;text-wrap:balance;letter-spacing:.005em}
+.serif-lead{font-family:var(--f-display);font-weight:300;font-size:var(--step-lead);line-height:1.28}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem var(--pad);
+  transition:background .5s ease,padding .5s ease,backdrop-filter .5s ease,border-color .5s ease;
+  border-bottom:1px solid transparent;
+}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,21,18,.5),rgba(15,21,18,0));transition:opacity .5s ease}
+.nav.scrolled{
+  background:rgba(15,21,18,.82);
+  backdrop-filter:blur(14px);
+  padding:.85rem var(--pad);
+  border-bottom:1px solid var(--line-d);
+}
+.nav.scrolled::before{opacity:0}
+.nav__brand,.nav__links a,.nav__toggle{text-shadow:0 1px 16px rgba(0,0,0,.4)}
+.nav.scrolled .nav__brand,.nav.scrolled .nav__links a,.nav.scrolled .nav__toggle{text-shadow:none}
+.nav__brand{font-family:var(--f-display);font-size:1.42rem;letter-spacing:.02em;color:var(--bone);display:flex;align-items:baseline;gap:.55rem}
+.nav__brand small{font-family:var(--f-ui);font-weight:400;font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sage);transform:translateY(-.15rem)}
+.nav__links{display:flex;gap:2.2rem;align-items:center}
+.nav__links a{font-size:var(--step-label);letter-spacing:.2em;text-transform:uppercase;color:var(--bone);opacity:.82;position:relative;padding:.2rem 0;transition:opacity .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--brass);transition:width .4s cubic-bezier(.22,1,.36,1)}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover::after{width:100%}
+.nav__cta{border:1px solid var(--line-d);padding:.6rem 1.15rem;border-radius:2px;color:var(--bone) !important;opacity:1 !important}
+.nav__cta:hover{background:var(--bone);color:var(--ink) !important;border-color:var(--bone)}
+.nav__cta::after{display:none}
+.nav__toggle{display:none}
+@media(max-width:860px){
+  .nav__links{display:none}
+  .nav__toggle{display:block;font-family:var(--f-ui);font-weight:400;font-size:var(--step-label);letter-spacing:.2em;text-transform:uppercase;color:var(--bone);background:transparent;border:1px solid rgba(241,237,226,.5);padding:.55rem .9rem;border-radius:2px;cursor:pointer}
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
+.hero__video{position:absolute;inset:0;z-index:0}
+.hero__video iframe{
+  position:absolute;top:50%;left:50%;
+  width:100vw;height:56.25vw;min-height:100svh;min-width:177.77svh;
+  transform:translate(-50%,-50%);border:0;pointer-events:none;
+}
+.hero__poster{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.hero__scrim{position:absolute;inset:0;z-index:1;
+  background:
+   linear-gradient(180deg,rgba(15,21,18,.55) 0%,rgba(15,21,18,.05) 26%,rgba(15,21,18,.12) 55%,rgba(15,21,18,.82) 100%),
+   radial-gradient(120% 90% at 15% 100%,rgba(32,52,42,.55),transparent 60%);
+}
+.hero__inner{position:relative;z-index:2;width:100%;padding-bottom:clamp(3rem,7vh,6rem)}
+.hero .eyebrow{color:var(--bone);opacity:0;transform:translateY(18px);animation:rise .9s .2s cubic-bezier(.22,1,.36,1) forwards}
+.hero h1{font-size:var(--step-hero);color:#fff;margin:1.1rem 0 1.4rem;max-width:16ch;font-weight:400}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(102%);animation:heroline 1.1s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .ln:nth-child(1) span{animation-delay:.28s}
+.hero h1 .ln:nth-child(2) span{animation-delay:.42s}
+.hero h1 .ln:nth-child(3) span{animation-delay:.56s}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero__row{display:flex;gap:1.8rem;align-items:center;flex-wrap:wrap;opacity:0;transform:translateY(18px);animation:rise .9s .95s cubic-bezier(.22,1,.36,1) forwards}
+.hero__sub{max-width:34ch;color:rgba(241,237,226,.9);font-size:var(--step-body)}
+@keyframes heroline{to{transform:translateY(0)}}
+@keyframes rise{to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--f-ui);font-weight:400;font-size:var(--step-label);letter-spacing:.22em;text-transform:uppercase;
+  padding:1rem 1.7rem;border-radius:2px;border:1px solid currentColor;
+  transition:background .4s,color .4s,gap .4s;white-space:nowrap;cursor:pointer;background:transparent;color:inherit;
+}
+.btn .arw{transition:transform .4s}
+.btn:hover{gap:1.1rem}
+.btn:hover .arw{transform:translateX(4px)}
+.btn--light{color:#fff}
+.btn--light:hover{background:#fff;color:var(--ink)}
+.btn--fill{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.btn--fill:hover{background:transparent;color:var(--brass)}
+
+.scrollcue{position:absolute;left:var(--pad);bottom:1.6rem;z-index:2;display:flex;align-items:center;gap:.7rem;font-size:var(--step-label);letter-spacing:.22em;text-transform:uppercase;color:rgba(241,237,226,.7)}
+.scrollcue i{display:block;width:34px;height:1px;background:var(--brass);position:relative;overflow:hidden}
+.scrollcue i::after{content:"";position:absolute;inset:0;background:var(--bone);animation:cue 2.4s infinite}
+@keyframes cue{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+@media(max-width:860px){.scrollcue{display:none}}
+
+/* ---------- SECTION SHELL ---------- */
+section{position:relative}
+.band{padding:clamp(4.5rem,11vh,9rem) 0}
+.band--bone{background:var(--bone);color:var(--ink)}
+.band--forest{background:var(--forest-deep);color:var(--bone)}
+.kicker{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem}
+.kicker .eyebrow{color:var(--brass)}
+.kicker i{height:1px;width:44px;background:var(--brass);opacity:.7}
+.band--bone .eyebrow{color:var(--forest)}
+
+/* ---------- INTRO / ETHOS ---------- */
+.intro{display:grid;grid-template-columns:1fr;gap:2rem}
+.intro h2{font-size:var(--step-h2);max-width:20ch;color:var(--ink)}
+.intro__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,5rem);align-items:end;margin-top:1rem}
+.intro__grid p{color:var(--stone);font-size:var(--step-body);max-width:46ch}
+.intro__meta{display:flex;flex-direction:column;gap:1.1rem}
+.metarow{display:flex;justify-content:space-between;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line-l)}
+.metarow span:first-child{font-size:var(--step-label);letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.metarow span:last-child{font-family:var(--f-display);font-size:1.25rem;color:var(--forest)}
+@media(max-width:820px){.intro__grid{grid-template-columns:1fr}}
+
+/* ---------- PORTFOLIO MOSAIC ---------- */
+.workhead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.6rem}
+.workhead h2{font-size:var(--step-h2)}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(.7rem,1.4vw,1.3rem)}
+.tile{position:relative;overflow:hidden;border-radius:2px;background:var(--ink-soft);display:block}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.22,1,.36,1),filter 1.1s}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,21,18,0) 40%,rgba(15,21,18,.78) 100%);opacity:.85;transition:opacity .6s}
+.tile__cap{position:absolute;left:0;bottom:0;z-index:2;padding:1.5rem 1.6rem;transform:translateY(6px);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.tile__cap .eyebrow{color:var(--sage);display:block;margin-bottom:.4rem}
+.tile__cap h3{font-size:clamp(1.5rem,1.2rem + 1vw,2.1rem);color:#fff}
+.tile:hover img{transform:scale(1.06)}
+.tile:hover::after{opacity:1}
+.tile:hover .tile__cap{transform:translateY(0)}
+.t-a{grid-column:span 7;aspect-ratio:16/11}
+.t-b{grid-column:span 5;aspect-ratio:4/5}
+.t-c{grid-column:span 5;aspect-ratio:4/5}
+.t-d{grid-column:span 7;aspect-ratio:16/11}
+.t-w{grid-column:span 12;aspect-ratio:21/8}
+@media(max-width:820px){
+  .t-a,.t-b,.t-c,.t-d,.t-w{grid-column:span 12;aspect-ratio:16/11}
+}
+
+/* ---------- CULTIVATE (differentiator) ---------- */
+.cultivate .kicker .eyebrow{color:var(--brass)}
+.cultivate h2{font-size:var(--step-h2);max-width:18ch;color:var(--bone)}
+.cultivate__lead{color:var(--sage);max-width:52ch;font-size:var(--step-body);margin-top:1.4rem}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.7rem,1.4vw,1.2rem);margin-top:3rem}
+.leaf{position:relative;overflow:hidden;border-radius:2px;aspect-ratio:3/4.4;background:var(--ink)}
+.leaf img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.leaf::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,21,18,0) 45%,rgba(15,21,18,.85))}
+.leaf__cap{position:absolute;inset:auto 0 0 0;z-index:2;padding:1.3rem 1.3rem 1.5rem}
+.leaf__cap .n{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+.leaf__cap h3{font-size:1.5rem;color:#fff;margin-top:.35rem}
+.leaf:hover img{transform:scale(1.07)}
+@media(max-width:820px){.strip{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- SERVICES ---------- */
+.services h2{font-size:var(--step-h2);max-width:16ch;color:var(--ink)}
+.svc-list{margin-top:2.5rem;border-top:1px solid var(--line-l)}
+.svc{display:grid;grid-template-columns:.5fr 2fr 3fr;gap:2rem;align-items:baseline;padding:2rem 0;border-bottom:1px solid var(--line-l);transition:padding-left .5s,background .5s}
+.svc .sidx{font-family:var(--f-display);font-size:1.2rem;color:var(--brass)}
+.svc h3{font-size:var(--step-h3);color:var(--ink)}
+.svc p{color:var(--stone);max-width:44ch}
+.svc:hover{padding-left:1.2rem}
+@media(max-width:820px){.svc{grid-template-columns:1fr;gap:.7rem;padding:1.6rem 0}.svc .sidx{display:none}}
+
+/* ---------- PROCESS ---------- */
+.process{background:var(--ink-soft)}
+.process h2{font-size:var(--step-h2);max-width:14ch}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3.5rem);margin-top:3rem}
+.step{border-top:1px solid var(--line-d);padding-top:1.4rem}
+.step .num{font-family:var(--f-display);font-size:2.6rem;color:var(--forest-bright);line-height:1}
+.step h3{font-size:1.5rem;margin:.7rem 0 .6rem;color:var(--bone)}
+.step p{color:var(--sage);max-width:34ch}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* ---------- CTA ---------- */
+.cta{position:relative;overflow:hidden;min-height:78svh;display:flex;align-items:center}
+.cta__bg{position:absolute;inset:0;z-index:0}
+.cta__bg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.77svh;transform:translate(-50%,-50%);border:0;pointer-events:none}
+.cta__scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(15,21,18,.9) 0%,rgba(15,21,18,.55) 55%,rgba(15,21,18,.25) 100%)}
+.cta__inner{position:relative;z-index:2}
+.cta h2{font-size:var(--step-h2);max-width:16ch;color:#fff}
+.cta p{color:rgba(241,237,226,.85);max-width:40ch;font-size:var(--step-body);margin:1.4rem 0 2.2rem}
+.cta__row{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.cta__phone{font-family:var(--f-display);font-size:1.9rem;color:var(--bone)}
+.cta__phone small{display:block;font-family:var(--f-ui);font-weight:400;font-size:var(--step-label);letter-spacing:.24em;text-transform:uppercase;color:var(--sage);margin-bottom:.2rem}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--ink);padding:clamp(3.5rem,8vh,6rem) 0 2.5rem}
+.foot__top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--line-d)}
+.foot__brand h3{font-family:var(--f-display);font-size:2rem;color:var(--bone)}
+.foot__brand p{color:var(--sage);max-width:34ch;margin-top:1rem}
+.fcol{display:flex;flex-direction:column;gap:.85rem}
+.fcol .eyebrow{color:var(--brass);margin-bottom:.4rem}
+.fcol a,.fcol span{color:rgba(241,237,226,.82);font-size:.98rem}
+.fcol a:hover{color:#fff}
+.foot__bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;padding-top:1.8rem;color:var(--stone);font-size:.8rem;letter-spacing:.04em}
+.foot__bottom a{color:var(--sage)}
+@media(max-width:820px){.foot__top{grid-template-columns:1fr;gap:2rem}}
+
+/* ---------- A11Y + MOBILE MENU ---------- */
+.skip{position:fixed;top:-120px;left:1rem;z-index:120;background:var(--bone);color:var(--ink);
+  font-family:var(--f-ui);font-size:var(--step-label);letter-spacing:.18em;text-transform:uppercase;
+  padding:.75rem 1.1rem;border-radius:2px;transition:top .25s}
+.skip:focus{top:1rem}
+a:focus-visible,.btn:focus-visible,.nav__toggle:focus-visible,.mnav__close:focus-visible{
+  outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+.mnav{position:fixed;inset:0;z-index:110;background:rgba(15,21,18,.97);backdrop-filter:blur(6px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.4rem;
+  opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
+.mnav.open{opacity:1;visibility:visible}
+.mnav__close{position:absolute;top:1.3rem;right:var(--pad);background:none;border:0;color:var(--bone);
+  font-size:1.6rem;line-height:1;cursor:pointer}
+.mnav__links{display:flex;flex-direction:column;align-items:center;gap:1.5rem;width:100%}
+.mnav__links a{font-family:var(--f-display);font-size:clamp(2rem,8vw,2.6rem);color:var(--bone);width:100%;text-align:center}
+.mnav__phone{font-family:var(--f-ui);font-size:var(--step-label);letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+
+.cta__poster{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center}
+
+/* ---------- REVEALS ---------- */
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity 1.1s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media(max-width:600px){
+  .hero h1{font-size:clamp(2.2rem,9vw,3rem);margin:.9rem 0 1.2rem}
+  .nav__brand small{display:none}
+  .hero__row{gap:1.1rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-delay:0s !important;transition-duration:.001ms !important}
+  .hero h1 .ln span{transform:none}
+  .js .reveal{opacity:1;transform:none}
+  .hero__video,.cta__bg{display:none}
+  .scrollcue i::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#ethos">Skip to content</a>
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top">Back to Nature <small>Est. New Jersey</small></a>
+  <div class="nav__links">
+    <a href="#work">Work</a>
+    <a href="#ethos">Ethos</a>
+    <a href="#cultivate">Cultivate</a>
+    <a href="#services">Services</a>
+    <a class="nav__cta" href="#contact">Contact</a>
+  </div>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">Menu</button>
+</nav>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <button class="mnav__close" type="button" aria-label="Close menu">&times;</button>
+  <nav class="mnav__links" aria-label="Mobile">
+    <a href="#work">Work</a>
+    <a href="#ethos">Ethos</a>
+    <a href="#cultivate">Cultivate</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="mnav__phone" href="tel:19083507506">(908) 350-7506</a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero__poster" style="background-image:url('https://backtonature.net/wp-content/uploads/2023/06/BTN-Landscape-6a.jpg')"></div>
+  <div class="hero__video" aria-hidden="true">
+    <iframe src="https://player.vimeo.com/video/1017256479?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" title="Ambient landscape film" tabindex="-1" allow="autoplay; fullscreen" loading="eager"></iframe>
+  </div>
+  <div class="hero__scrim"></div>
+  <div class="hero__inner wrap">
+    <p class="eyebrow">New Jersey · New York · Connecticut</p>
+    <h1>
+      <span class="ln"><span>Where others see</span></span>
+      <span class="ln"><span>challenges, we see</span></span>
+      <span class="ln"><span><em>a living garden.</em></span></span>
+    </h1>
+    <div class="hero__row">
+      <a class="btn btn--light" href="#work">View the Work <span class="arw">→</span></a>
+      <p class="hero__sub">An ecologically inspired landscape architecture &amp; design/build firm.</p>
+    </div>
+  </div>
+  <div class="scrollcue"><i></i> Scroll</div>
+</header>
+
+<!-- ETHOS / INTRO -->
+<section class="band band--bone" id="ethos">
+  <div class="wrap intro reveal">
+    <div class="kicker"><i></i><span class="eyebrow">Our Ethos</span></div>
+    <h2>We design and build outdoor spaces that are as ecologically alive as they are beautiful.</h2>
+    <div class="intro__grid">
+      <p>For four decades, Back to Nature has shaped estates, gardens, and grounds across the tri-state area — landscapes conceived as ecosystems, drawn by hand, and built to mature gracefully with the land they belong to.</p>
+      <div class="intro__meta">
+        <div class="metarow"><span>Discipline</span><span>Design / Build</span></div>
+        <div class="metarow"><span>Approach</span><span>Ecological</span></div>
+        <div class="metarow"><span>Studio</span><span>Basking Ridge, NJ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="band band--bone" id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="workhead reveal">
+      <div>
+        <div class="kicker"><i></i><span class="eyebrow">Selected Work</span></div>
+        <h2>Estates, gardens &amp; grounds.</h2>
+      </div>
+      <a class="btn" href="#" style="color:var(--forest)">All Projects <span class="arw">→</span></a>
+    </div>
+    <div class="mosaic reveal">
+      <a class="tile t-a" href="#">
+        <img src="https://backtonature.net/wp-content/uploads/2023/12/BTN_FZ-r1.jpg" alt="Harding Harvest project" loading="lazy">
+        <div class="tile__cap"><span class="eyebrow">Harding Township, NJ</span><h3>Harding Harvest</h3></div>
+      </a>
+      <a class="tile t-b" href="#">
+        <img src="https://backtonature.net/wp-content/uploads/2023/05/redFlowers.jpg" alt="Residential design and installation" loading="lazy">
+        <div class="tile__cap"><span class="eyebrow">Residential</span><h3>Design &amp; Installation</h3></div>
+      </a>
+      <a class="tile t-c" href="#">
+        <img src="https://backtonature.net/wp-content/uploads/2023/07/Eco-agro-1-header.jpg" alt="Eco and agro luxury estate" loading="lazy">
+        <div class="tile__cap"><span class="eyebrow">Estate</span><h3>Eco &amp; Agro Luxury</h3></div>
+      </a>
+      <a class="tile t-d" href="#">
+        <img src="https://backtonature.net/wp-content/uploads/2023/05/luxury-LEED.jpg" alt="Luxury and LEED certified landscape" loading="lazy">
+        <div class="tile__cap"><span class="eyebrow">LEED Certified</span><h3>Luxury &amp; LEED</h3></div>
+      </a>
+      <a class="tile t-w" href="#">
+        <img src="https://backtonature.net/wp-content/uploads/2023/06/inspired-meadow.jpg" alt="Native meadow inspired by nature" loading="lazy">
+        <div class="tile__cap"><span class="eyebrow">Native Meadow</span><h3>Inspired by Nature</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CULTIVATE -->
+<section class="band band--forest cultivate" id="cultivate">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker"><i></i><span class="eyebrow">What sets us apart</span></div>
+      <h2>A landscape that feeds the people who live in it.</h2>
+      <p class="cultivate__lead">Beyond ornament, we build productive ecosystems — orchards, apiaries, medicinal gardens and heritage coops — woven into the design so the land gives back season after season.</p>
+    </div>
+    <div class="strip reveal">
+      <div class="leaf"><img src="https://backtonature.net/wp-content/uploads/2025/07/Orchards.jpg" alt="Orchards" loading="lazy"><div class="leaf__cap"><div class="n">Cultivate</div><h3>Orchards</h3></div></div>
+      <div class="leaf"><img src="https://backtonature.net/wp-content/uploads/2025/07/Medicinal-Herbs.jpg" alt="Medicinal herb garden" loading="lazy"><div class="leaf__cap"><div class="n">Cultivate</div><h3>Medicinal Herbs</h3></div></div>
+      <div class="leaf"><img src="https://backtonature.net/wp-content/uploads/2025/07/Chicken-Coop.jpg" alt="Heritage chicken coop" loading="lazy"><div class="leaf__cap"><div class="n">Cultivate</div><h3>Heritage Coops</h3></div></div>
+      <div class="leaf"><img src="https://backtonature.net/wp-content/uploads/2025/05/IMG_7208-2.jpg" alt="Kitchen garden beds" loading="lazy"><div class="leaf__cap"><div class="n">Cultivate</div><h3>Kitchen Gardens</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="band band--bone services" id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker"><i></i><span class="eyebrow">What we do</span></div>
+      <h2>Four disciplines, one integrated studio.</h2>
+    </div>
+    <div class="svc-list reveal">
+      <div class="svc"><span class="sidx">/ 01</span><h3>Landscape Architecture</h3><p>Master plans and hand-drawn designs that read the site first — grade, light, water, and the ecology already at work.</p></div>
+      <div class="svc"><span class="sidx">/ 02</span><h3>Design / Build</h3><p>One team from sketch to stone. Terraces, pools, plantings and structures built by our own crews to the drawing's intent.</p></div>
+      <div class="svc"><span class="sidx">/ 03</span><h3>Fine Maintenance</h3><p>Stewardship that lets a landscape mature — pruning, soil health, and seasonal care by horticulturists, not mowers.</p></div>
+      <div class="svc"><span class="sidx">/ 04</span><h3>Edible &amp; Cultivated</h3><p>Orchards, kitchen gardens, apiaries and culinary experiences that make the grounds productive and alive.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="band process">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker"><i></i><span class="eyebrow">How we work</span></div>
+      <h2>A considered path from land to legacy.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="num">01</div><h3>Design</h3><p>We walk the land, understand how you live, and draw a plan that belongs to the place.</p></div>
+      <div class="step"><div class="num">02</div><h3>Build</h3><p>Our own crews construct it — hardscape, water, and thousands of plants set by hand.</p></div>
+      <div class="step"><div class="num">03</div><h3>Steward</h3><p>We stay on, tending the landscape so it grows richer and more established each year.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta__bg" aria-hidden="true">
+    <div class="cta__poster" style="background-image:url('https://backtonature.net/wp-content/uploads/2023/06/inspired-meadow.jpg')"></div>
+    <iframe src="https://player.vimeo.com/video/783406618?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" title="Ambient garden film" tabindex="-1" loading="lazy" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="cta__scrim"></div>
+  <div class="cta__inner wrap">
+    <div class="kicker"><i></i><span class="eyebrow" style="color:var(--brass)">Begin</span></div>
+    <h2>Let's design the grounds you'll grow into.</h2>
+    <p>Consultations are by appointment from our Basking Ridge studio, serving New Jersey, New York &amp; Connecticut.</p>
+    <div class="cta__row">
+      <a class="btn btn--fill" href="tel:19083507506">Start a Project <span class="arw">→</span></a>
+      <div class="cta__phone"><small>Studio</small>(908) 350-7506</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <h3>Back to Nature</h3>
+        <p>An ecologically inspired landscape design/build firm and garden center in Basking Ridge, New Jersey.</p>
+      </div>
+      <div class="fcol">
+        <span class="eyebrow">Studio</span>
+        <span>Basking Ridge, New Jersey</span>
+        <span>Mon–Fri · 9–5, by appointment</span>
+        <a href="tel:19083507506">(908) 350-7506</a>
+      </div>
+      <div class="fcol">
+        <span class="eyebrow">Explore</span>
+        <a href="#work">Work</a>
+        <a href="#cultivate">Cultivate</a>
+        <a href="#services">Services</a>
+        <a href="https://www.instagram.com/backtonature.nj" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Back to Nature Home &amp; Garden — a Mariani Premier Group company.</span>
+      <span>Concept redesign · <a href="#top">Back to top ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state */
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>40);};
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+/* reveals */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* smooth in-page anchors (respects reduced motion) */
+const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',ev=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){const t=document.querySelector(id);if(t){ev.preventDefault();t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});}}
+  });
+});
+
+/* mobile menu */
+const mnav=document.getElementById('mnav');
+const openBtn=document.querySelector('.nav__toggle');
+const closeBtn=document.querySelector('.mnav__close');
+function setMenu(open){
+  mnav.classList.toggle('open',open);
+  mnav.setAttribute('aria-hidden',String(!open));
+  openBtn.setAttribute('aria-expanded',String(open));
+  document.body.style.overflow=open?'hidden':'';
+  if(open){closeBtn.focus();}else{openBtn.focus();}
+}
+openBtn.addEventListener('click',()=>setMenu(true));
+closeBtn.addEventListener('click',()=>setMenu(false));
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open'))setMenu(false);});
+
+/* honor reduced-motion: drop background video so nothing autoplays */
+if(reduce){document.querySelectorAll('.hero__video,.cta__bg iframe').forEach(el=>el.remove());}
+</script>
+</body>
+</html>
