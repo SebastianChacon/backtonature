@@ -111,16 +111,22 @@ export default function HomePage() {
       <section className="bg-bone pb-[clamp(4.5rem,11vh,9rem)] text-ink">
         <div className="wrap">
           <Reveal>
-            <div className="mb-11 flex flex-wrap items-end justify-between gap-6">
+            <div className="mb-11 flex flex-wrap items-end justify-between gap-x-10 gap-y-8 border-b border-ink/15 pb-8">
               <div>
                 <Kicker tone="forest">Selected Work</Kicker>
-                <h2 className="[font-size:var(--text-h2)]">
+                <h2 className="max-w-[14ch] [font-size:var(--text-h2)]">
                   Estates, gardens &amp; grounds.
                 </h2>
               </div>
-              <Button href="/case-study" className="text-forest">
-                All Projects
-              </Button>
+              <div className="flex flex-col items-start gap-6">
+                <p className="max-w-[38ch] text-stone [font-size:var(--text-body)]">
+                  {featured.length} landscapes from four decades of work — each
+                  one read, drawn and built for the ground it stands on.
+                </p>
+                <Button href="/case-study" className="text-forest">
+                  All Projects
+                </Button>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
