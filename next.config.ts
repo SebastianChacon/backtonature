@@ -6,8 +6,11 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
 
   images: {
-    // Requisito: las fotos siguen viviendo en la biblioteca de WordPress hasta que
-    // el cliente entregue los originales. next/image las sirve como AVIF/WebP.
+    // Requisito: las fotos de galería/mosaico siguen viviendo en la biblioteca
+    // de WordPress hasta que el cliente entregue los originales. Las
+    // portadas (LCP de cada página) se auto-alojaron en /public/images/hero
+    // para no depender de la latencia de un origen externo en la foto que
+    // más bloquea el pintado — ver public/images/hero.
     remotePatterns: [
       {
         protocol: "https",
@@ -17,11 +20,17 @@ const nextConfig: NextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
-    // 60 = piezas del mosaico, miniaturas y fotos de página interior; 75 es
-    // el que piden las portadas (home, PageHero, ContactCta) — son la imagen
-    // más grande y más vista de cada página, así que ahí sí se paga el peso
-    // extra a cambio de que no se note tanto la compresión. Bajados desde
-    // 75/85 para acortar la carga en conexiones lentas.
+    // El salto por defecto de Next (1920 → 3840) obliga a una pantalla
+    // retina normal (~1280 CSS px × 2 dpr = 2560) a descargar el bucket de
+    // 3840 entero. Se añade 2560 para que esa franja, la más común en
+    // portátiles retina, no pague el peso del bucket más grande.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840],
+    // 60 = piezas del mosaico, miniaturas, fotos de página interior Y las
+    // portadas (home, PageHero, ContactCta) — comprobado visualmente: en
+    // fotos con follaje/detalle fino, 75 no se distingue de 60 pero pesa
+    // ~27% más incluso en AVIF, y encima la portada siempre lleva un
+    // degradado oscuro pesado encima. 75 se mantiene solo para el visor de
+    // Lightbox (foto suelta a pantalla completa, ahí sí se pide detalle real).
     qualities: [60, 75],
   },
 

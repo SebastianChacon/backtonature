@@ -20,7 +20,7 @@ export default function HowWeWorkPage() {
         eyebrow="How We Work"
         title="A considered path from land to legacy."
         lead="One studio, four stages, and the same team from the first site walk to the tenth season of care."
-        image="https://backtonature.net/wp-content/uploads/2023/12/btn-wrld-D-R.jpg"
+        image="/images/hero/how-we-work.jpg"
         imageAlt="A designed landscape maturing into the land it belongs to"
         height="short"
       />

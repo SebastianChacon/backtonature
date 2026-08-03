@@ -38,7 +38,7 @@ export default function PageHero({
         fill
         priority
         sizes="100vw"
-        quality={75}
+        quality={60}
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}
         className="object-cover"

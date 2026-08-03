@@ -38,7 +38,7 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            quality={75}
+            quality={60}
             placeholder="blur"
             blurDataURL={BLUR_DATA_URL}
             className="hero-kenburns object-cover"

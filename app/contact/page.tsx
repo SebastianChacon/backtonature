@@ -20,7 +20,7 @@ export default function ContactPage() {
         eyebrow="Contact Us"
         title="Get in touch with us."
         lead="Consultations are by appointment. Tell us about the property and we'll usually be walking it within a week."
-        image="https://backtonature.net/wp-content/uploads/2023/06/contact-us-header.jpeg"
+        image="/images/hero/contact.jpg"
         imageAlt="A planted terrace at the edge of a woodland clearing"
         height="short"
       />

@@ -22,7 +22,7 @@ export const galleries: GalleryCategory[] = [
     "slug": "featured-work",
     "title": "Featured Work",
     "description": "A cross-section of the studio's built work across the tri-state area.",
-    "cover": "https://backtonature.net/wp-content/uploads/2023/12/BTN_F_A-r.jpg",
+    "cover": "/images/hero/galleries-cover.jpg",
     "images": [
       {
         "src": "https://backtonature.net/wp-content/uploads/2023/12/BTN_F_A-r.jpg",
