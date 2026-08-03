@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { aboutPage } from "@/content/pages";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import ContactCta from "@/components/ContactCta";
+import FadeImage from "@/components/FadeImage";
 import Reveal from "@/components/Reveal";
 import { Band, Button, Kicker } from "@/components/ui";
 
@@ -122,12 +122,12 @@ export default function AboutPage() {
                   className="group relative overflow-hidden rounded-[2px]"
                 >
                   <div className="relative aspect-[16/10]">
-                    <Image
+                    <FadeImage
                       src={service.hero}
                       alt={service.heroAlt}
                       fill
                       sizes="(max-width: 640px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-[1100ms] ease-[var(--ease-editorial)] group-hover:scale-105"
+                      className="object-cover group-hover:scale-105"
                     />
                     <span
                       aria-hidden="true"

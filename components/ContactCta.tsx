@@ -22,7 +22,7 @@ export default function ContactCta({
         aria-hidden="true"
         fill
         sizes="100vw"
-        quality={85}
+        quality={75}
         className="object-cover"
       />
       <VideoBackground

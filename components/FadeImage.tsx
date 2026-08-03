@@ -2,6 +2,7 @@
 
 import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 /**
  * D-05 · Fundido de entrada para fotos diferidas.
@@ -22,12 +23,21 @@ import { useState } from "react";
  * —la que gane en la hoja de estilos pisa a la otra por completo— y una de
  * las dos animaciones dejaría de tener efecto.
  */
-export default function FadeImage({ className = "", ...props }: ImageProps) {
+export default function FadeImage({
+  className = "",
+  quality = 60,
+  placeholder = "blur",
+  blurDataURL = BLUR_DATA_URL,
+  ...props
+}: ImageProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
     <Image
       {...props}
+      quality={quality}
+      placeholder={placeholder}
+      blurDataURL={blurDataURL}
       onLoad={(e) => {
         setLoaded(true);
         props.onLoad?.(e);

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { getProject, getRelatedProjects, projects } from "@/content/projects";
 import { pageMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Lightbox from "@/components/Lightbox";
 import ContactCta from "@/components/ContactCta";
+import FadeImage from "@/components/FadeImage";
 import Reveal from "@/components/Reveal";
 import { ProjectTile } from "@/components/ProjectMosaic";
 import { BreadcrumbJsonLd, ProjectJsonLd } from "@/components/JsonLd";
@@ -136,7 +136,7 @@ export default async function ProjectPage({
       {/* Cita destacada sobre foto */}
       {project.pullQuote && project.gallery[0] && (
         <section className="relative flex min-h-[60svh] items-center overflow-hidden">
-          <Image
+          <FadeImage
             src={project.gallery[0].src}
             alt=""
             aria-hidden="true"

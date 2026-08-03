@@ -10,7 +10,9 @@ import ContactCta from "@/components/ContactCta";
 import FadeImage from "@/components/FadeImage";
 import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
+import Testimonials from "@/components/Testimonials";
 import { Band, Button, Eyebrow, Kicker } from "@/components/ui";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 const featured = featuredSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
@@ -36,7 +38,9 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            quality={85}
+            quality={75}
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
             className="object-cover"
           />
           <VideoBackground
@@ -145,6 +149,8 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* ---------- CULTIVATE — el diferenciador ---------- */}
       <Band tone="forest">
