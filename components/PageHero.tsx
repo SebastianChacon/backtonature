@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { BLUR_DATA_URL } from "@/lib/image";
+import { heroBlurData } from "@/lib/heroBlur";
 import { Eyebrow } from "./ui";
 
 /**
@@ -40,7 +41,7 @@ export default function PageHero({
         sizes="100vw"
         quality={60}
         placeholder="blur"
-        blurDataURL={BLUR_DATA_URL}
+        blurDataURL={heroBlurData[image] ?? BLUR_DATA_URL}
         className="object-cover"
       />
       {/*
