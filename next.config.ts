@@ -1,4 +1,9 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   // El sitio actual canonicaliza con barra final (/about/ y 301 desde /about).
@@ -86,4 +91,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
