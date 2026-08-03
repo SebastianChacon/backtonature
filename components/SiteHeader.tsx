@@ -86,9 +86,26 @@ export default function SiteHeader() {
         className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--spacing-pad)] transition-[background-color,padding,backdrop-filter,border-color] duration-500 ${
           scrolled
             ? "border-b border-bone/15 bg-ink/85 py-3 backdrop-blur-md"
-            : "border-b border-transparent bg-gradient-to-b from-ink/50 to-transparent py-6"
+            : "border-b border-transparent py-6"
         }`}
       >
+        {/*
+          A11Y · contraste del nav sobre la portada, sin la costura del scrim.
+          Antes este degradado vivía en el propio <header> (91px de alto) y
+          terminaba justo en su borde; debajo, el hero pinta OTRO degradado
+          independiente y mucho más largo. Dos rampas lineales con pendientes
+          tan distintas empalmadas crean un salto de pendiente (banda de Mach)
+          justo en esa costura, muy visible sobre un cielo liso. Al alargar el
+          desvanecido en una capa aparte, su pendiente se acerca a la del hero
+          y la costura deja de notarse.
+        */}
+        {!scrolled && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[clamp(9rem,20vh,15rem)] bg-gradient-to-b from-ink/50 to-transparent"
+          />
+        )}
+
         <Link
           href="/"
           className="flex items-baseline gap-2 font-[family-name:var(--font-display)] text-[1.42rem] tracking-[0.02em] text-bone"
