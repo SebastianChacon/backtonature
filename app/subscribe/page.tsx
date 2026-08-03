@@ -19,7 +19,7 @@ export default function SubscribePage() {
         eyebrow="Subscribe for Updates"
         title="Occasional notes from the studio."
         lead="News, seasonal openings and special events. Infrequent, and easy to leave."
-        image="https://backtonature.net/wp-content/uploads/2023/06/Back-To-Nature-Landscape-Gallery-20.jpg"
+        image="/images/hero/subscribe.jpg"
         imageAlt="A seasonal planting in a mature garden"
         height="short"
       />

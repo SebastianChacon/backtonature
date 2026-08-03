@@ -21,7 +21,7 @@ export const aboutPage: EditorialPage = {
   title: "Who We Are",
   eyebrow: "About Us",
   lead: "Back to Nature is an award-winning landscape architecture, construction and maintenance firm based in Northern New Jersey.",
-  hero: "https://backtonature.net/wp-content/uploads/2023/05/Mizuno-Walkway.jpg",
+  hero: "/images/hero/about.jpg",
   heroAlt: "A stone walkway winding through a mature planted landscape",
   sections: [
     {
@@ -44,7 +44,7 @@ export const ethosPage: EditorialPage = {
   title: "Our Clients are Partners in Success",
   eyebrow: "Ethos",
   lead: "We are more than just a landscape company — we are creators of outdoor living experiences.",
-  hero: "https://backtonature.net/wp-content/uploads/2023/06/Back-To-Nature-Landscape-Gallery-19.jpg",
+  hero: "/images/hero/ethos.jpg",
   heroAlt: "A garden designed as an extension of the home it belongs to",
   sections: [
     {
@@ -126,6 +126,6 @@ export const careersCopy = {
   /** El sitio actual publica esta página también en español. */
   leadEs:
     "Una carrera significativa en paisajismo comienza con Back to Nature. Con nosotros, trabajará hacia la excelencia en diseño/construcción y mantenimiento, afinando habilidades cruciales mientras desarrolla relaciones laborales que durarán toda la vida.",
-  hero: "https://backtonature.net/wp-content/uploads/2023/06/Careers-header.jpg",
+  hero: "/images/hero/careers.jpg",
   heroAlt: "A Back to Nature crew at work on a landscape installation",
 } as const;

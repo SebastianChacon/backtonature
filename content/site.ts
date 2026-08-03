@@ -116,8 +116,10 @@ export const videos = {
      * content/galleries.ts, pero a 2155×1436 (2.2× más píxeles) y con más
      * alto que ancho, que es lo que pide un hero de 100svh.
      */
-    poster:
-      "https://backtonature.net/wp-content/uploads/2023/12/btn-pool-F.jpg",
+    // Auto-alojada (D-05/perf): es el LCP de la home y se pedía en vivo a
+    // WordPress en cada visita — 150-350ms de latencia de origen antes de
+    // que next/image pudiera ni empezar a transcodificarla.
+    poster: "/images/hero/home.jpg",
     /**
      * Los dos másters traen la placa de intro con el logo incrustada y ese
      * lettering choca con el titular. El video se reproduce oculto sobre el
@@ -130,8 +132,10 @@ export const videos = {
   cta: {
     vimeoId: "783406618",
     title: "Ambient garden film",
-    poster:
-      "https://backtonature.net/wp-content/uploads/2023/06/inspired-meadow.jpg",
+    // Auto-alojada (perf): se pinta al final de CADA página del sitio
+    // (ContactCta), así que era el segundo peaje de latencia de origen más
+    // repetido de todo el sitio.
+    poster: "/images/hero/inspired-meadow.jpg",
     revealAfter: 9,
   },
 } as const;

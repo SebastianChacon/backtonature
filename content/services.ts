@@ -37,7 +37,7 @@ export const services: Service[] = [
     tagline: "Inspired by nature, crafted with creativity & care",
     summary:
       "Master plans and hand-drawn designs that read the site first — grade, light, water, and the ecology already at work.",
-    hero: "https://backtonature.net/wp-content/uploads/2025/05/IMG_0558-2_Mine-Brook-2.jpg",
+    hero: "/images/hero/service-landscape-architecture.jpg",
     heroAlt:
       "Landscape architecture — a designed garden reading the grade of its site",
     intro: [
@@ -66,7 +66,7 @@ export const services: Service[] = [
     tagline: "Rooted in Precision",
     summary:
       "One team from sketch to stone. Terraces, pools, plantings and structures built by our own crews to the drawing's intent.",
-    hero: "https://backtonature.net/wp-content/uploads/2025/05/IMG_0530_Saluzzo-Walkway-1.jpg",
+    hero: "/images/hero/service-landscape-construction.jpg",
     heroAlt: "Landscape construction — a masonry walkway under a mature canopy",
     intro: [
       "Our construction team is celebrated for their expertise, precision, and exceptional craftsmanship. Specializing in the creation of intricate, dynamic landscapes, we manage every detail.",
@@ -94,7 +94,7 @@ export const services: Service[] = [
     tagline: "Maintaining Beauty, Enhancing Possibility",
     summary:
       "Stewardship that lets a landscape mature — pruning, soil health, and seasonal care by horticulturists, not mowers.",
-    hero: "https://backtonature.net/wp-content/uploads/2023/12/btn-med-B3.jpg",
+    hero: "/images/hero/service-landscape-maintenance.jpg",
     heroAlt:
       "Landscape maintenance — seasonal care keeping a mature garden in health",
     intro: [
@@ -123,7 +123,7 @@ export const services: Service[] = [
     tagline: "From Field to Fork",
     summary:
       "Orchards, kitchen gardens, apiaries and culinary experiences that make the grounds productive and alive.",
-    hero: "https://backtonature.net/wp-content/uploads/2024/01/tasting-home-garden-food.jpg",
+    hero: "/images/hero/service-edible-gardens.jpg",
     heroAlt:
       "Edible gardens and culinary experiences — a harvest from the kitchen garden",
     intro: [

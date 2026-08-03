@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "Edible Gardens",
       "Design/Build"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/12/BTN_FZ-r1.jpg",
+    "hero": "/images/hero/project-harding-harvest.jpg",
     "narrativePending": true,
     "pullQuote": null,
     "sections": [],
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "Design/Build",
       "Outdoor Living"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2025/05/IMG_9143.jpg",
+    "hero": "/images/hero/project-chateau-in-bloom.jpg",
     "narrativePending": true,
     "pullQuote": null,
     "sections": [],
@@ -168,7 +168,7 @@ export const projects: Project[] = [
       "Historic",
       "Design/Build"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2025/05/IMG_6701-3_Saluzzo-Gate.jpg",
+    "hero": "/images/hero/project-montclair-historic-haven.jpg",
     "narrativePending": true,
     "pullQuote": null,
     "sections": [],
@@ -219,7 +219,7 @@ export const projects: Project[] = [
       "LEED",
       "Ecological"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/07/Pottersville-Deli-header.jpg",
+    "hero": "/images/hero/project-historic-hamlet-redesigned.jpg",
     "narrativePending": false,
     "pullQuote": "Using regenerative and sustainable practices, Back to Nature has helped elevate the vision for this project beyond its current course towards LEED certification.",
     "sections": [
@@ -293,7 +293,7 @@ export const projects: Project[] = [
       "Edible Gardens",
       "Master Planning"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/07/Eco-agro-1-header.jpg",
+    "hero": "/images/hero/project-eco-and-agro-luxury.jpg",
     "narrativePending": false,
     "pullQuote": "Visioning and nature’s own processes provide the opportunity for a designed “ecosystem” that is environmentally responsible and fulfilling. Collecting, conserving, and reusing are essential components to this integrated system.",
     "sections": [
@@ -389,7 +389,7 @@ export const projects: Project[] = [
       "Meadow",
       "Ecological"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/06/inspired-meadow.jpg",
+    "hero": "/images/hero/inspired-meadow.jpg",
     "narrativePending": false,
     "pullQuote": "We created continuous displays of color and texture using perennials with staggered flowering seasons and with ornamental grasses whose foliage brought color, texture and movement into the winter months.",
     "sections": [
@@ -532,7 +532,7 @@ export const projects: Project[] = [
       "LEED",
       "Institutional"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/05/willow-school-1a.jpg",
+    "hero": "/images/hero/project-master-planning.jpg",
     "narrativePending": false,
     "pullQuote": "It was determined that many of the site design features and some of the building systems could be integrated into the great expression of the forest that was once there.",
     "sections": [
@@ -664,7 +664,7 @@ export const projects: Project[] = [
       "Ecological",
       "Stormwater"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/05/luxury-LEED.jpg",
+    "hero": "/images/hero/project-luxury-and-leed.jpg",
     "narrativePending": false,
     "pullQuote": "Plants had to meet important criteria: vigor, cold hardiness, heat/drought tolerance, no need for deadheading or staking, and resistance to disease and pests.",
     "sections": [
@@ -798,7 +798,7 @@ export const projects: Project[] = [
       "Perennial Gardens",
       "Masonry"
     ],
-    "hero": "https://backtonature.net/wp-content/uploads/2023/05/Residential-Design-Installation-header.jpg",
+    "hero": "/images/hero/project-residential-design-and-installation.jpg",
     "narrativePending": false,
     "pullQuote": "The design and construction style was intended to evoke a sense of time and history, which made the residence seem like it had been there for a hundred years, but it also reflected the client’s personality and desires.",
     "sections": [
