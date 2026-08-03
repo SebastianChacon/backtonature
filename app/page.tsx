@@ -13,6 +13,7 @@ import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
 import { Band, Button, Eyebrow, Kicker } from "@/components/ui";
 import { BLUR_DATA_URL } from "@/lib/image";
+import { heroBlurData } from "@/lib/heroBlur";
 
 const featured = featuredSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
@@ -40,7 +41,7 @@ export default function HomePage() {
             sizes="100vw"
             quality={60}
             placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
+            blurDataURL={heroBlurData[videos.hero.poster] ?? BLUR_DATA_URL}
             className="hero-kenburns object-cover"
           />
           <VideoBackground
