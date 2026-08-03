@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -106,14 +107,15 @@ export default function SiteHeader() {
           />
         )}
 
-        <Link
-          href="/"
-          className="flex items-baseline gap-2 font-[family-name:var(--font-display)] text-[1.42rem] tracking-[0.02em] text-bone"
-        >
-          {site.name}
-          <small className="hidden -translate-y-0.5 font-[family-name:var(--font-ui)] text-[0.56rem] font-normal tracking-[0.34em] text-sage uppercase sm:block">
-            {site.founded}
-          </small>
+        <Link href="/" className="relative block h-9 w-[154px] shrink-0 sm:h-10 sm:w-[172px]">
+          <Image
+            src="/images/logo.png"
+            alt={site.name}
+            fill
+            priority
+            sizes="172px"
+            className="object-contain object-left"
+          />
         </Link>
 
         {/* Navegación de escritorio */}
