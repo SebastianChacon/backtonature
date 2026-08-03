@@ -107,8 +107,17 @@ export const videos = {
   hero: {
     vimeoId: "1017256479",
     title: "Ambient landscape film",
+    /**
+     * El póster original ("...Homepage-Header-2-Compressed.jpg") es la única
+     * versión que existe de esa foto en la biblioteca: 1920×739, un techo
+     * bajo para una portada a pantalla completa — en monitores anchos o
+     * retina se ve borrosa porque el navegador la escala por encima de su
+     * resolución nativa. Esta es la misma galería "Meadows" de
+     * content/galleries.ts, pero a 2155×1436 (2.2× más píxeles) y con más
+     * alto que ancho, que es lo que pide un hero de 100svh.
+     */
     poster:
-      "https://backtonature.net/wp-content/uploads/2023/06/Back-to-Nature-Homepage-Header-2-Compressed.jpg",
+      "https://backtonature.net/wp-content/uploads/2023/12/btn-pool-F.jpg",
     /**
      * Los dos másters traen la placa de intro con el logo incrustada y ese
      * lettering choca con el titular. El video se reproduce oculto sobre el

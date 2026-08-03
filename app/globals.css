@@ -177,6 +177,46 @@
 }
 
 /* ------------------------------------------------------------------
+   Hero de portada — gancho de apertura (D-05, excepción deliberada)
+
+   Es la única foto a pantalla completa del sitio y el primer fotograma que
+   ve cualquier visitante, así que aquí sí se deja notar el movimiento: un
+   zoom lento sobre la imagen (Ken Burns) mientras carga el vídeo, y una
+   entrada escalonada del titular. Ambos son animaciones CSS puras — sin
+   Reveal/JS de por medio — así que corren igual sin scripting, y con
+   `prefers-reduced-motion` la regla general de abajo las colapsa a un
+   fundido instantáneo en vez de dejarlas en marcha.
+------------------------------------------------------------------- */
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-kenburns {
+  animation: hero-kenburns 20s var(--ease-editorial) both;
+  transform-origin: 50% 38%;
+}
+
+.hero-in {
+  animation: hero-in 1.2s var(--ease-editorial) both;
+}
+
+/* ------------------------------------------------------------------
    Movimiento — respeta prefers-reduced-motion (A11Y)
 ------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -187,6 +227,10 @@
 
   .parallax-layer {
     inset: 0;
+    transform: none;
+  }
+
+  .hero-kenburns {
     transform: none;
   }
 

@@ -41,7 +41,7 @@ export default function HomePage() {
             quality={75}
             placeholder="blur"
             blurDataURL={BLUR_DATA_URL}
-            className="object-cover"
+            className="hero-kenburns object-cover"
           />
           <VideoBackground
             vimeoId={videos.hero.vimeoId}
@@ -60,14 +60,16 @@ export default function HomePage() {
         />
 
         <div className="wrap relative z-10 w-full pb-[clamp(3rem,7vh,6rem)]">
-          <Eyebrow className="text-bone">
+          <Eyebrow className="hero-in text-bone">
             {site.contact.serviceArea.join(" · ")}
           </Eyebrow>
-          <h1 className="mt-4 mb-6 max-w-[16ch] text-white [font-size:var(--text-hero)]">
+          <h1
+            className="hero-in mt-4 mb-6 max-w-[16ch] text-white [animation-delay:0.15s] [font-size:var(--text-hero)]"
+          >
             Where others see challenges, we see{" "}
             <em className="text-sage italic">a living garden.</em>
           </h1>
-          <div className="flex flex-wrap items-center gap-7">
+          <div className="hero-in flex flex-wrap items-center gap-7 [animation-delay:0.32s]">
             <Button href="/case-study" variant="light">
               View the Work
             </Button>
