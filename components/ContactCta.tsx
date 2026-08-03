@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { site, videos } from "@/content/site";
+import FadeImage from "./FadeImage";
 import VideoBackground from "./VideoBackground";
 import { Button, Eyebrow, Kicker } from "./ui";
 
@@ -16,7 +16,7 @@ export default function ContactCta({
 }) {
   return (
     <section className="relative flex min-h-[78svh] items-center overflow-hidden">
-      <Image
+      <FadeImage
         src={videos.cta.poster}
         alt=""
         aria-hidden="true"

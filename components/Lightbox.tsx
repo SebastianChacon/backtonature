@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GalleryImage } from "@/content/projects";
+import FadeImage from "./FadeImage";
 
 /**
  * F-04 · Galería con visor a pantalla completa.
@@ -92,12 +93,12 @@ export default function Lightbox({
             }}
             className="group relative aspect-[4/3] overflow-hidden rounded-[2px] bg-ink-soft"
           >
-            <Image
+            <FadeImage
               src={img.src}
               alt={img.alt}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-[900ms] ease-[var(--ease-editorial)] group-hover:scale-105"
+              className="object-cover group-hover:scale-105"
             />
             <span className="sr-only">Open image {i + 1} full screen</span>
           </button>

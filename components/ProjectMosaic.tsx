@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/content/projects";
+import FadeImage from "./FadeImage";
 import Parallax from "./Parallax";
 import { Eyebrow } from "./ui";
 
@@ -88,14 +89,26 @@ export function ProjectTile({
    */
   parallax?: boolean;
 }) {
-  const photo = (
+  // `priority` solo lo pediría una portada LCP: ahí conviene la imagen sin
+  // fundido, para no retrasar su opacidad hasta `onLoad`. FadeImage pone su
+  // propia transición combinada (fundido + zoom), así que su variante no
+  // lleva `transition-transform` propio — ver comentario en FadeImage.tsx.
+  const photo = priority ? (
     <Image
       src={project.hero}
       alt={project.heroAlt}
       fill
       sizes={sizes}
-      priority={priority}
+      priority
       className="object-cover transition-transform duration-[1100ms] ease-[var(--ease-editorial)] group-hover:scale-105"
+    />
+  ) : (
+    <FadeImage
+      src={project.hero}
+      alt={project.heroAlt}
+      fill
+      sizes={sizes}
+      className="object-cover group-hover:scale-105"
     />
   );
 
