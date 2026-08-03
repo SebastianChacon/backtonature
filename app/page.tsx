@@ -7,6 +7,7 @@ import { homeProcess } from "@/content/pages";
 import VideoBackground from "@/components/VideoBackground";
 import ProjectMosaic from "@/components/ProjectMosaic";
 import ContactCta from "@/components/ContactCta";
+import FadeImage from "@/components/FadeImage";
 import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import { Band, Button, Eyebrow, Kicker } from "@/components/ui";
@@ -173,12 +174,12 @@ export default function HomePage() {
                     className="absolute inset-0"
                     shift="clamp(0.75rem,2.5vh,2rem)"
                   >
-                    <Image
+                    <FadeImage
                       src={item.image}
                       alt={item.alt}
                       fill
                       sizes="(max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-editorial)] group-hover:scale-107"
+                      className="object-cover group-hover:scale-107"
                     />
                   </Parallax>
                   <span
