@@ -73,6 +73,74 @@ export default function ContactForm() {
         </Field>
       </div>
 
+      <Field
+        id="propertyLocation"
+        label="Property location"
+        error={state.errors?.propertyLocation}
+      >
+        {(props) => (
+          <input type="text" placeholder="Bernardsville, NJ" {...props} />
+        )}
+      </Field>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <Field
+          id="propertySize"
+          label="Property size"
+          error={state.errors?.propertySize}
+        >
+          {(props) => (
+            <select defaultValue="" {...props}>
+              <option value="" disabled>
+                Select one
+              </option>
+              <option value="Under 1 acre">Under 1 acre</option>
+              <option value="1–3 acres">1–3 acres</option>
+              <option value="3–5 acres">3–5 acres</option>
+              <option value="5+ acres">5+ acres</option>
+            </select>
+          )}
+        </Field>
+        <Field
+          id="projectType"
+          label="Project type"
+          error={state.errors?.projectType}
+        >
+          {(props) => (
+            <select defaultValue="" {...props}>
+              <option value="" disabled>
+                Select one
+              </option>
+              <option value="New design / build">New design / build</option>
+              <option value="Ongoing maintenance">Ongoing maintenance</option>
+              <option value="Edible garden & culinary">
+                Edible garden &amp; culinary
+              </option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          )}
+        </Field>
+      </div>
+
+      <Field
+        id="budgetRange"
+        label="Approximate budget"
+        error={state.errors?.budgetRange}
+      >
+        {(props) => (
+          <select defaultValue="" {...props}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option value="Under $50k">Under $50k</option>
+            <option value="$50k – $100k">$50k – $100k</option>
+            <option value="$100k – $250k">$100k – $250k</option>
+            <option value="$250k+">$250k+</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        )}
+      </Field>
+
       <Field id="message" label="Message" error={state.errors?.message}>
         {(props) => (
           <textarea

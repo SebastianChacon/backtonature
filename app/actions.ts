@@ -20,6 +20,32 @@ const contactSchema = z.object({
   lastName: z.string().trim().min(1, "Please enter your last name."),
   email: z.email("Please enter a valid email address."),
   phone: z.string().trim().min(7, "Please enter a phone number we can reach."),
+  propertyLocation: z
+    .string()
+    .trim()
+    .min(1, "Please tell us the town and state."),
+  propertySize: z.enum(["Under 1 acre", "1–3 acres", "3–5 acres", "5+ acres"], {
+    message: "Please select the approximate property size.",
+  }),
+  projectType: z.enum(
+    [
+      "New design / build",
+      "Ongoing maintenance",
+      "Edible garden & culinary",
+      "Not sure yet",
+    ],
+    { message: "Please select the type of project." },
+  ),
+  budgetRange: z.enum(
+    [
+      "Under $50k",
+      "$50k – $100k",
+      "$100k – $250k",
+      "$250k+",
+      "Prefer not to say",
+    ],
+    { message: "Please select a budget range." },
+  ),
   message: z
     .string()
     .trim()
@@ -90,6 +116,10 @@ export async function submitContact(
     lastName: formData.get("lastName"),
     email: formData.get("email"),
     phone: formData.get("phone"),
+    propertyLocation: formData.get("propertyLocation"),
+    propertySize: formData.get("propertySize"),
+    projectType: formData.get("projectType"),
+    budgetRange: formData.get("budgetRange"),
     message: formData.get("message"),
   });
 
@@ -106,6 +136,10 @@ export async function submitContact(
     `Name: ${d.firstName} ${d.lastName}`,
     `Email: ${d.email}`,
     `Phone: ${d.phone}`,
+    `Location: ${d.propertyLocation}`,
+    `Property size: ${d.propertySize}`,
+    `Project type: ${d.projectType}`,
+    `Budget: ${d.budgetRange}`,
     "",
     d.message,
   ]);

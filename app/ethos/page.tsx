@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import EditorialSections from "@/components/EditorialSections";
 import ContactCta from "@/components/ContactCta";
 import Reveal from "@/components/Reveal";
-import Image from "next/image";
+import FadeImage from "@/components/FadeImage";
 import { Band, Kicker } from "@/components/ui";
 
 export const metadata: Metadata = pageMetadata({
@@ -48,12 +48,12 @@ export default function EthosPage() {
                   key={item.title}
                   className="group relative aspect-[3/4] overflow-hidden rounded-[2px]"
                 >
-                  <Image
+                  <FadeImage
                     src={item.image}
                     alt={item.alt}
                     fill
                     sizes="(max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-editorial)] group-hover:scale-105"
+                    className="object-cover group-hover:scale-105"
                   />
                   <span
                     aria-hidden="true"

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { services } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import ContactCta from "@/components/ContactCta";
 import Reveal from "@/components/Reveal";
+import FadeImage from "@/components/FadeImage";
 import { Band, Eyebrow, Kicker } from "@/components/ui";
 
 export const metadata: Metadata = pageMetadata({
@@ -37,7 +37,7 @@ export default function WhatWeDoPage() {
                 }`}
               >
                 <figure className="relative aspect-[4/3] overflow-hidden rounded-[2px]">
-                  <Image
+                  <FadeImage
                     src={service.hero}
                     alt={service.heroAlt}
                     fill

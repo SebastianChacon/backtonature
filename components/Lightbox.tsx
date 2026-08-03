@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GalleryImage } from "@/content/projects";
 import FadeImage from "./FadeImage";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 /**
  * F-04 · Galería con visor a pantalla completa.
@@ -140,6 +141,8 @@ export default function Lightbox({
                 sizes="100vw"
                 className="object-contain"
                 priority
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
               />
             </div>
             <figcaption className="[font-size:var(--text-label)] tracking-[0.18em] text-sage uppercase">
