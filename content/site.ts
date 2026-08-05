@@ -121,13 +121,31 @@ export const videos = {
     // que next/image pudiera ni empezar a transcodificarla.
     poster: "/images/hero/home.jpg",
     /**
-     * Los dos másters traen la placa de intro con el logo incrustada y ese
-     * lettering choca con el titular. El video se reproduce oculto sobre el
-     * póster estos segundos y luego se funde. Es una tirita: el arreglo bueno
-     * es que el cliente entregue un máster sin intro, como pide el documento de
-     * requerimientos (§11 Contenido y activos). Al llegar, poner 0.
+     * Ventana del máster que se usa como fondo, en segundos.
+     *
+     * El máster (117s) NO es metraje ambiente: es el promo de marca, y lleva
+     * grafismo incrustado repartido por toda la duración —el lettering de
+     * intro (0-12s), chinchetas negras con el logo sobre los planos aéreos
+     * (~7s, ~31s, ~43s, ~66s, ~83s, ~90s), un plano de barbacoa (~19s), el
+     * rótulo "Rooted in Excellence" (~106s) y la placa negra final con el
+     * logo y el crédito de producción (~108-117s).
+     *
+     * `revealAfter: 12` solo esquivaba el lettering de intro: a partir de ahí
+     * el hero iba enseñando chinchetas y rótulos, y cada dos minutos se ponía
+     * entero negro. Por eso aquí se RECORTA en vez de retrasar — así el fondo
+     * puede además destaparse de inmediato, sin 12s de foto fija delante.
+     *
+     * Este tramo es el único suficientemente largo y limpio del máster:
+     * pradera a hora dorada, gramíneas, salvias y cardos. Verificado
+     * fotograma a fotograma sobre el propio máster de Vimeo.
+     *
+     * Cuando el cliente entregue un máster ambiente sin grafismo (documento de
+     * requerimientos §11 Contenido y activos), este recorte sobra.
      */
-    revealAfter: 12,
+    // `end` va con holgura: el player avisa del progreso cada ~250ms y el salto
+    // tarda en atenderse, así que se sobrepasa ~0.2-0.5s. El rótulo "Rooted in
+    // Excellence" entra a ~106.4s; cortar en 104.8 deja margen de sobra.
+    clip: { start: 91.5, end: 104.8 },
   },
   cta: {
     vimeoId: "783406618",
@@ -136,6 +154,19 @@ export const videos = {
     // (ContactCta), así que era el segundo peaje de latencia de origen más
     // repetido de todo el sitio.
     poster: "/images/hero/inspired-meadow.jpg",
-    revealAfter: 9,
+    /**
+     * Mismo problema que el hero, y peor: este máster (176s) es el caso de
+     * estudio en video. Lleva al director a cámara (~47s, ~64s, ~131s, ~158s),
+     * planos de obra, bocetos a mano (~72s, ~144s), rótulos "AFTER" quemados
+     * en la imagen (~121-129s) y una placa final blanca con el logo, el
+     * teléfono y la web (~162-170s). Nada de eso puede quedar detrás del
+     * bloque de contacto, que además se pinta al final de CADA página.
+     *
+     * `revealAfter: 9` no lo evitaba. Esta es la secuencia limpia más larga:
+     * muro de piedra, borduras, terraza de piscina, pérgola y comedor con
+     * lavanda, hasta justo antes de que entre el director a cámara.
+     */
+    // Mismo margen que el hero: el director entra a cámara a ~63.7s.
+    clip: { start: 51.5, end: 62.5 },
   },
 } as const;

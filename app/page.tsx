@@ -47,7 +47,7 @@ export default function HomePage() {
           <VideoBackground
             vimeoId={videos.hero.vimeoId}
             title={videos.hero.title}
-            revealAfter={videos.hero.revealAfter}
+            clip={videos.hero.clip}
           />
         </Parallax>
         {/*
