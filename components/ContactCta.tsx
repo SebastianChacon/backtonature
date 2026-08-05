@@ -28,7 +28,7 @@ export default function ContactCta({
       <VideoBackground
         vimeoId={videos.cta.vimeoId}
         title={videos.cta.title}
-        revealAfter={videos.cta.revealAfter}
+        clip={videos.cta.clip}
       />
       <div
         aria-hidden="true"
