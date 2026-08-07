@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { credentials, founded, founderCredentials } from "@/content/credentials";
 import type { Project } from "@/content/projects";
 import { canonical } from "@/lib/seo";
 
@@ -43,7 +44,27 @@ export function LocalBusinessJsonLd() {
           "@type": "AdministrativeArea",
           name,
         })),
-        sameAs: [site.social.instagram],
+        foundingDate: String(founded),
+        founder: {
+          "@type": "Person",
+          name: founderCredentials.name,
+          jobTitle: founderCredentials.role,
+        },
+        /**
+         * `award` acepta texto libre y admite varios. Se emite el título más
+         * el año para que la cadena se sostenga sola fuera de contexto —
+         * Google la puede mostrar sin la página alrededor.
+         */
+        award: credentials.map((item) => `${item.title} (${item.year})`),
+        /**
+         * Las fuentes citadas también van en `sameAs`: es donde un motor
+         * espera encontrar corroboración de tercero, y es exactamente lo que
+         * son. Se deduplican por si dos logros comparten publicación.
+         */
+        sameAs: [
+          site.social.instagram,
+          ...new Set(credentials.map((item) => item.source.url)),
+        ],
       }}
     />
   );

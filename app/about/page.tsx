@@ -7,6 +7,11 @@ import PageHero from "@/components/PageHero";
 import ContactCta from "@/components/ContactCta";
 import FadeImage from "@/components/FadeImage";
 import Reveal from "@/components/Reveal";
+import {
+  FounderCredentials,
+  MeasuredOutcomes,
+  Recognition,
+} from "@/components/Recognition";
 import { Band, Button, Kicker } from "@/components/ui";
 
 export const metadata: Metadata = pageMetadata({
@@ -80,6 +85,14 @@ export default function AboutPage() {
         </div>
       </Band>
 
+      {/* Los logros, con fuente. Es la misma pieza que la home: /about es la
+          página a la que llega quien ya está evaluando, y ahí la prueba pesa
+          todavía más que en la portada. */}
+      <Recognition />
+
+      {/* Quién firma los planos */}
+      <FounderCredentials />
+
       {/* Cifras verificables del sitio actual */}
       <Band tone="forest">
         <div className="wrap">
@@ -104,6 +117,9 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </Band>
+
+      {/* Rendimiento medido por un tercero */}
+      <MeasuredOutcomes />
 
       {/* Enlace a las cuatro disciplinas */}
       <Band tone="bone">

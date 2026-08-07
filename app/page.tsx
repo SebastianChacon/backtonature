@@ -11,6 +11,7 @@ import FadeImage from "@/components/FadeImage";
 import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
+import { Recognition } from "@/components/Recognition";
 import { Band, Button, Eyebrow, Kicker } from "@/components/ui";
 import { BLUR_DATA_URL } from "@/lib/image";
 import { heroBlurData } from "@/lib/heroBlur";
@@ -96,7 +97,7 @@ export default function HomePage() {
           <Reveal delay={0.05}>
             <div className="mt-10 grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
               <p className="max-w-[46ch] text-stone [font-size:var(--text-body)]">
-                For four decades, Back to Nature has shaped estates, gardens,
+                Since 1994, Back to Nature has shaped estates, gardens,
                 and grounds across the tri-state area — landscapes conceived as
                 ecosystems, drawn by hand, and built to mature gracefully with
                 the land they belong to.
@@ -138,7 +139,7 @@ export default function HomePage() {
               </div>
               <div className="flex flex-col items-start gap-6">
                 <p className="max-w-[38ch] text-stone [font-size:var(--text-body)]">
-                  {featured.length} landscapes from four decades of work — each
+                  {featured.length} landscapes from three decades of work — each
                   one read, drawn and built for the ground it stands on.
                 </p>
                 <Button href="/case-study" className="text-forest">
@@ -152,6 +153,9 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* ---------- LOGROS — la prueba, justo después de ver el trabajo ---------- */}
+      <Recognition />
 
       <Testimonials />
 
