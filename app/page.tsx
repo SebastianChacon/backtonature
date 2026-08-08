@@ -48,6 +48,9 @@ export default function HomePage() {
             vimeoId={videos.hero.vimeoId}
             title={videos.hero.title}
             clip={videos.hero.clip}
+            /* El plano de la ventana limpia es muy quieto: a 1x el fondo
+               parecía una foto. Solo el hero — el de contacto está bien. */
+            speed={1.25}
           />
         </Parallax>
         {/*
