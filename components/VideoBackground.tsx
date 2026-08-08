@@ -40,11 +40,20 @@ export default function VideoBackground({
   vimeoId,
   title,
   clip,
+  speed = 1,
 }: {
   vimeoId: string;
   title: string;
   /** Ventana limpia del máster, en segundos. Se reproduce en bucle. */
   clip: { readonly start: number; readonly end: number };
+  /**
+   * Velocidad de reproducción (Vimeo acepta de 0.5 a 2). El fondo del hero va
+   * algo acelerado porque la ventana limpia es un plano muy quieto y a 1x
+   * parecía una foto. Si la cuenta de Vimeo no tiene permitido cambiar la
+   * velocidad, el player ignora la orden y se queda en 1x: se ve igual que
+   * antes, no se rompe nada.
+   */
+  speed?: number;
 }) {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -95,6 +104,7 @@ export default function VideoBackground({
       // que tenía escondido este fondo.
       post({ method: "addEventListener", value: "timeupdate" });
       post({ method: "addEventListener", value: "playProgress" });
+      if (speed !== 1) post({ method: "setPlaybackRate", value: speed });
     };
 
     const rewind = () => {
@@ -145,7 +155,7 @@ export default function VideoBackground({
     // `visible` queda fuera a propósito: si entrara, el destape desmontaría y
     // volvería a montar el listener, y con él se perdería la suscripción que
     // mantiene el bucle dentro de la ventana.
-  }, [active, clipStart, clipEnd]);
+  }, [active, clipStart, clipEnd, speed]);
 
   const src =
     `https://player.vimeo.com/video/${vimeoId}` +
