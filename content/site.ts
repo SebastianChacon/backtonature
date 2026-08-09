@@ -170,3 +170,47 @@ export const videos = {
     clip: { start: 51.5, end: 62.5 },
   },
 } as const;
+
+/**
+ * F-05b · Los mismos dos másters, pero para VERLOS, no como fondo.
+ *
+ * `videos` (arriba) los usa de tapiz y por eso tiene que recortarlos: el
+ * grafismo incrustado —lettering, chinchetas con el logo, rótulos "AFTER", la
+ * placa final— arruina un fondo. Aquí pasa lo contrario: ese grafismo ES la
+ * pieza. Son las dos películas de marca del estudio y se reproducen enteras,
+ * con sonido y controles, a petición del usuario. Por eso no llevan `clip`.
+ *
+ * Siguen sirviéndose desde Vimeo (cuenta de Finite Visual, la productora).
+ * Vimeo no publica archivo progresivo de ninguno de los dos y tiene la
+ * descarga desactivada, así que no hay copia auto-alojada que servir: el
+ * reproductor incrustado es la vía prevista. Los pósters sí están
+ * auto-alojados en /public/images/films — son las cartelas oficiales que
+ * expone la API oEmbed, y así la sección pinta sin depender de Vimeo.
+ *
+ * El día que el cliente entregue los originales (requerimientos §11), esto
+ * pasa a <video> local cambiando solo este objeto y FilmPlayer.
+ */
+export const films = [
+  {
+    id: "rooted-in-excellence",
+    /** Título en pantalla del propio máster (~106s). */
+    title: "Rooted in Excellence",
+    eyebrow: "Brand Film",
+    vimeoId: "1017256479",
+    /** Duración real del máster en Vimeo, para el sello de la ficha. */
+    seconds: 117,
+    poster: "/images/films/rooted-in-excellence.jpg",
+    blurb:
+      "Four decades of practice in under two minutes — aerial passes over the estates, the meadow at golden hour, and the craft that holds it all together.",
+  },
+  {
+    id: "garden-case-study",
+    title: "A Garden, Start to Finish",
+    eyebrow: "Case Study",
+    vimeoId: "783406618",
+    seconds: 176,
+    poster: "/images/films/garden-case-study.jpg",
+    blurb:
+      "One landscape from first sketch to final planting: hand drawings, stonework going in, and the finished terrace, told by the director who designed it.",
+  },
+] as const;
