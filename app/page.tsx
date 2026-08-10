@@ -5,6 +5,7 @@ import { featuredSlugs, projects } from "@/content/projects";
 import { cultivate, services } from "@/content/services";
 import { homeProcess } from "@/content/pages";
 import VideoBackground from "@/components/VideoBackground";
+import Films from "@/components/Films";
 import ProjectMosaic from "@/components/ProjectMosaic";
 import ContactCta from "@/components/ContactCta";
 import FadeImage from "@/components/FadeImage";
@@ -127,6 +128,9 @@ export default function HomePage() {
           </Reveal>
         </div>
       </Band>
+
+      {/* ---------- FILMS (F-05b) ---------- */}
+      <Films />
 
       {/* ---------- PORTFOLIO ---------- */}
       <section className="bg-bone pb-[clamp(4.5rem,11vh,9rem)] text-ink">
