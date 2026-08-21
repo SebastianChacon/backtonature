@@ -18,6 +18,16 @@
   --color-stone: #6c7269;
   --color-brass: #b08a4f;
 
+  /* Rotuladores del tablero de producción (/calendar). No forman parte de la
+     paleta editorial: viven solo dentro de la pizarra. */
+  --color-marker-red: #dd2a5c;
+  --color-marker-green: #0f9c8b;
+  --color-marker-blue: #2a4fd0;
+  --color-marker-orange: #eb8a20;
+  --color-marker-ink: #232a26;
+  --color-board: #f6f7f4;
+  --color-board-rule: #7d94a6;
+
   /* Tipografía (D-02) — las familias las inyecta next/font en layout.tsx */
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-ui: var(--font-jost), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
