@@ -1,4 +1,4 @@
-import { Caveat, Cormorant_Garamond, Jost } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 
 /**
  * D-02 · Tipografía.
@@ -22,14 +22,5 @@ export const jost = Jost({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   variable: "--font-jost",
-  display: "swap",
-});
-
-// Rotulador de pizarra. Solo la carga la ruta /calendar, que es la única que
-// reproduce el tablero de producción de la oficina.
-export const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-caveat",
   display: "swap",
 });
