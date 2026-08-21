@@ -78,15 +78,6 @@ export default function HomePage() {
             <Button href="/case-study" variant="light">
               View the Work
             </Button>
-            {/* Secundario: mismo peso tipográfico, borde más callado, para
-                que "View the Work" siga siendo la acción principal. */}
-            <Button
-              href="/calendar"
-              variant="light"
-              className="border-white/45 text-white/85"
-            >
-              Calendario
-            </Button>
             <p className="max-w-[34ch] text-bone/90 [font-size:var(--text-body)]">
               An ecologically inspired landscape architecture &amp; design/build
               firm.
